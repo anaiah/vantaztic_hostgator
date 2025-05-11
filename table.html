@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Vantaztic</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css?h=0516002ac6166f9bc5a60df257b0e1f8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css?h=37efe7e508357f382d0a5b2b73cd47ee">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0"><a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-down-square-fill" viewBox="0 0 16 16">
+                        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm4 4a.5.5 0 0 0-.374.832l4 4.5a.5.5 0 0 0 .748 0l4-4.5A.5.5 0 0 0 12 6H4z"/>
+                    </svg>    
+                </div>
+                    <div class="sidebar-brand-text mx-3"><span>vantaztic inc.</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item"><a class="nav-link" href="/dashboard"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link active" href="javascript:void(0)"><i class="fas fa-pen-nib"></i><span>xSales</span></a></li>
+                    
+                    <!--//
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                    -->
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"></div>
+                        </form>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="me-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">3+</span><i class="fas fa-bell fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><span class="badge bg-danger badge-counter">7</span><i class="fas fa-envelope fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg?h=fefb30b61c8459a66bd338b7d790c3d5">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
+                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg?h=5d142be9441885f0935b84cf739d4112">
+                                                <div class="status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
+                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">
+                                                <div class="bg-warning status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg?h=35dc45edbcda6b3fc752dab2b0f082ea">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="javascript:void(0)"><span id='xname' class="d-none d-lg-inline me-2 text-gray-600 small"></span><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg?h=0ecc82101fb9a10ca459432faa8c0656"></a>
+                                    <!--//
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                    -->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Team</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Employee Info</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label class="form-label">Show&nbsp;<select class="d-inline-block form-select form-select-sm">
+                                                <option value="10" selected="">10</option>
+                                                <option value="25">25</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                            </select>&nbsp;</label></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-end dataTables_filter" id="dataTable_filter"><label class="form-label"><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Office</th>
+                                            <th>Age</th>
+                                            <th>Start date</th>
+                                            <th>Salary</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg?h=0ecc82101fb9a10ca459432faa8c0656">Airi Satou</td>
+                                            <td>Accountant</td>
+                                            <td>Tokyo</td>
+                                            <td>33</td>
+                                            <td>2008/11/28</td>
+                                            <td>$162,700</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg?h=5d142be9441885f0935b84cf739d4112">Angelica Ramos</td>
+                                            <td>Chief Executive Officer(CEO)</td>
+                                            <td>London</td>
+                                            <td>47</td>
+                                            <td>2009/10/09<br></td>
+                                            <td>$1,200,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">Ashton Cox</td>
+                                            <td>Junior Technical Author</td>
+                                            <td>San Francisco</td>
+                                            <td>66</td>
+                                            <td>2009/01/12<br></td>
+                                            <td>$86,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg?h=fefb30b61c8459a66bd338b7d790c3d5">Bradley Greer</td>
+                                            <td>Software Engineer</td>
+                                            <td>London</td>
+                                            <td>41</td>
+                                            <td>2012/10/13<br></td>
+                                            <td>$132,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg?h=35dc45edbcda6b3fc752dab2b0f082ea">Brenden Wagner</td>
+                                            <td>Software Engineer</td>
+                                            <td>San Francisco</td>
+                                            <td>28</td>
+                                            <td>2011/06/07<br></td>
+                                            <td>$206,850</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar1.jpeg?h=0ecc82101fb9a10ca459432faa8c0656">Brielle Williamson</td>
+                                            <td>Integration Specialist</td>
+                                            <td>New York</td>
+                                            <td>61</td>
+                                            <td>2012/12/02<br></td>
+                                            <td>$372,000</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar2.jpeg?h=5d142be9441885f0935b84cf739d4112">Bruno Nash<br></td>
+                                            <td>Software Engineer</td>
+                                            <td>London</td>
+                                            <td>38</td>
+                                            <td>2011/05/03<br></td>
+                                            <td>$163,500</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">Caesar Vance</td>
+                                            <td>Pre-Sales Support</td>
+                                            <td>New York</td>
+                                            <td>21</td>
+                                            <td>2011/12/12<br></td>
+                                            <td>$106,450</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar4.jpeg?h=fefb30b61c8459a66bd338b7d790c3d5">Cara Stevens</td>
+                                            <td>Sales Assistant</td>
+                                            <td>New York</td>
+                                            <td>46</td>
+                                            <td>2011/12/06<br></td>
+                                            <td>$145,600</td>
+                                        </tr>
+                                        <tr>
+                                            <td><img class="rounded-circle me-2" width="30" height="30" src="assets/img/avatars/avatar5.jpeg?h=35dc45edbcda6b3fc752dab2b0f082ea">Cedric Kelly</td>
+                                            <td>Senior JavaScript Developer</td>
+                                            <td>Edinburgh</td>
+                                            <td>22</td>
+                                            <td>2012/03/29<br></td>
+                                            <td>$433,060</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Name</strong></td>
+                                            <td><strong>Position</strong></td>
+                                            <td><strong>Office</strong></td>
+                                            <td><strong>Age</strong></td>
+                                            <td><strong>Start date</strong></td>
+                                            <td><strong>Salary</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<!--//insert modals-->
+<!--//equipment Modal//-->
+<div class="modal fade" id="equipmentModal" tabindex="-1" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+        <div class="modal-content">
+            
+            <div class="modal-header modalcolor">
+                <h4 class="modal-title"><i class="bi-pencil-square" style="font-size:17px"></i> Add Equipment</h4>
+                <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!--//modal body-->
+            <div class="modal-body">
+                
+                <!--//=== ALERT CONTAINER!!!-->
+                <div id="equipmentPlaceHolder"></div>
+                <!--//END ALERT-->
+
+                <div class="container-fluid" >	
+                    <!--//form goes here -->
+                     <!--//FORM SIGNUP-->
+                    <form id="equipmentForm" class="needs-validation equipmentForm row gy-2 gx-2 align-items-center" method="GET" novalidate>
+                    
+                    <div class="row mb-4">
+                        <div class="col">
+                            <label for="serial-no">Serial No.</label>
+                            <input readonly type="text" id="serial" name="serial" class="form-control" />
+                        
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="row mb-4">
+                        <div class="col">
+                          <div class="form-outline">
+                            <label for="equipment_type">Equipment Type</label>
+                            <select class="form-control equipmentx" id="equipment_type" name="equipment_type" required>
+                                <option value="" selected>Select...</option>	
+                                <option value="Container">Container</option>
+                                <option value="Collapsible">Collapsible</option>
+                                <option value="Genset">Genset</option>
+                                <option value="Chassis">Chassis</option>
+                                <option value="Ref Van">Ref Van</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                *Error
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                        
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-outline">
+                            <label for="condition">Condition</label>
+                            <select class="form-control equipmentx" id="condition" name="condition" required>
+                              <option value="" selected>Select...</option>	
+                              <option value="For Repair">For Repair</option>
+                              <option value="For Cleaning">For Cleaning</option>
+                              <option value="Class A">Class A</option>
+                              <option value="Class B">Class B</option>
+                            </select>
+                             <div class="invalid-feedback">
+                                *Error
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                
+                          </div>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                          <div class="form-outline">
+                            <label for="with-load">With Load</label>
+                            <select class="form-control equipmentx" id="with-load" name="with-load" required>
+                                <option value="" selected>Select...</option>	
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                *Error
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                        
+                          </div>
+                        </div>
+                        <div class="col">
+                          <div class="form-outline">
+                            <label for="materials">Materials</label>
+                            <select class="form-control equipmentx" id="materials" name="materials"  required>
+                              <option value="" selected>Select...</option>
+                              <option value="Aluminum">Aluminum</option>
+                              <option value="Metal">Metal</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                *Error
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                        
+                          </div>
+                        </div>
+                        
+                        <div class="col">
+                          <div class="form-outline">
+                            <label for="label-attach">Label Attached</label>
+                            <select class="form-control equipmentx" id="label-attach" name="label-attach"  required>
+                              <option value="" selected>Select...</option>
+                              <option value="Yes">Yes</option>
+                              <option value="No">No</option>
+                            </select>
+                            <div class="invalid-feedback">
+                                *Error
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                        
+                          </div>
+                        </div>
+                    </div>
+
+                    <!-- Text input -->
+                    <div class="row mb-4">
+                        <div class="col">
+                            <label class="form-label" for="driver">Driver</label>
+                            <input type="text" id="driver" class="form-control equipmentx" name="driver"  required />
+                            <div class="invalid-feedback">
+                                Required Field
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                        
+                        </div>
+                    </div>
+                      <!-- Text input -->
+
+                      <!-- Email input -->
+                    <div class="row mb-4">
+                        <div class="col">
+                            <label class="form-label" for="license">License No.</label>
+                            <input type="text" id="license" class="form-control equipmentx" name="license" required />
+                            <div class="invalid-feedback">
+                                Required Field
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                        
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col">
+                            <label class="form-label" for="plate-no">Plate No.</label>
+                            <input type="text" id="plate-no" class="form-control equipmentx" name="plate-no" required />
+                            <div class="invalid-feedback">
+                                Required Field
+                            </div>
+                            <div class="valid-feedback">
+                                Looking Good!
+                            </div>
+                        
+                        </div>
+                    </div>
+                    
+                    <div class="row mb-4">
+                        <div class="col">
+                            <label class="form-label " for="remarks">Remarks</label>
+                            <textarea class="form-control equipmentx" id="remarks" name="remarks" rows="4"></textarea>
+                            
+                        </div>  
+                    </div>
+                    
+                    </form>
+                    <!--//end form -->
+                    
+                </div>
+                <!--//end container//-->
+           </div>
+            <!--//footer-->
+            <div class="modal-footer">
+                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" id="signup-btn" onclick="ajax.validateMe('equipmentModal','#equipmentForm','equipmentx')" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>					
+<!--//end equipment modal//-->
+
+
+<!--//signup Modal-->
+<div class="modal fade" id="signupModal" tabindex="-1" aria-labelledby="signupModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            
+            <div class="modal-header" style="background-color: cadetblue;">
+                <h4 class="modal-title"><i class="bi-pencil-square" style="font-size:17px"></i> Create Account</h4>
+                <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+            </div>
+
+            <!--//modal body-->
+            <div class="modal-body">
+                
+                <!--//=== ALERT CONTAINER!!!-->
+                <div id="signupPlaceHolder"></div>
+                <!--//END ALERT-->
+
+                <div class="container">
+                
+                <!--//FORM SIGNUP-->
+                <form id="signupForm" class="needs-validation signupForm" method="GET" novalidate>
+                    <div class="form-group">
+                        <input minlength="5" type="text" class="form-control signx ffname" id="full_name" name="full_name" placeholder="Full Name" required>
+                        <div class="valid-feedback">
+                            Full Name looking great!       
+                                
+                        </div>
+                        <div class="invalid-feedback">
+                            Ooops...!
+                        </div>            
+                    </div>
+                    <div class="form-group">
+                        <input value="carlodominguez@yahoo.com" type="email" class="form-control signx" id="email" name="email" placeholder="Email" required>
+                        <div class="valid-feedback">
+                            Email looks amazing!
+                        </div>
+                        <div class="invalid-feedback">
+                            Ooops...!
+                        </div>            
+                    
+                    </div>
+                    <!--  THIS IS THE CORRECT EMAIL -->
+                    <div class="form-group">
+                        <input type="password" class="form-control signx p1" value="C@rlo1" id="pwd" name="pwd" placeholder="Password" required>
+
+                        <div class="valid-feedback">
+                            Nice Strong Password!
+                        </div>
+                        <div class="invalid-feedback">
+                            Wrong
+                        </div> 
+                        <!--start-->
+                        <div id="password-alert" class="alert px-4 py-3 mb-0 d-none" role="alert" data-mdb-color="warning">
+                            <ul class="list-unstyled mb-0">
+                                <li class="requirements leng">
+                                    <i class="bi-check-lg text-success me-3"></i>
+                                    <i class="bi-x-lg text-danger me-2"></i>
+                                    <span id='pmsg'>Password must have at least 6 chars</span>
+                                </li>
+                                <li class="requirements big-letter">
+                                    <i class="bi-check-lg text-success me-3"></i>
+                                    <i class="bi-x-lg text-danger me-2"></i>
+                                    <span id='pmsg'>Password must have at least 1 BIG LETTER</span>
+                                </li>
+                                <li class="requirements num">
+                                    <i class="bi-check-lg text-success me-3"></i>
+                                    <i class="bi-x-lg text-danger me-2"></i>
+                                    <span id='pmsg'>Password must have at least 1 number</span>
+                                </li> 
+                                <li class="requirements special-char">
+                                    <i class="bi-check-lg text-success me-3"></i>
+                                    <i class="bi-x-lg text-danger me-2"></i>
+                                    <span id='pmsg'>Password must have at least 1 special ch@r</span>
+                                </li>                                                                                                             
+                            </ul>
+                        </div>
+                            <!--end -->
+                    </div><!--end formgroup-->
+                    
+                    
+                    <div class="form-group">
+                        <input type="password" class="form-control signx p2" id="pwd2" name="pw2" placeholder="Re-Enter Password" required>
+                        <div class="valid-feedback">
+                            Yay..Password Matched! 
+                        </div>
+                        <div class="invalid-feedback">
+                            Password not matched!
+                        </div>            
+
+                    </div>
+                                                   
+                </form>
+                <!--//end form -->
+
+                </div>
+            </div>
+            <!--//footer-->
+            <div class="modal-footer">
+                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                <button class="btn btn-primary" id="signup-btn" onclick="ajax.validateMe('signupModal','#signupForm','signx')" type="button">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--//signup Modal-->
+
+
+<!--//end modals-->
+
+<!--//footer -->
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Vantaztic 2023</span></div>
+                </div>
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/bs-init.js?h=e2b0d57f2c4a9b0d13919304f87f79ae"></script>
+    <script src="assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
+    <script src="assets/js/util.js"></script>
+    <script>
+        //write name
+        const xname = document.getElementById('xname')
+        xname.innerHTML = util.getCookie('fname')
+        util.speak( util.getCookie('the_voice'))
+    </script>
+</body>
+
+</html>
