@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='0'> 
+    <meta http-equiv='pragma' content='no-cache'> 
+    <title>Table - Vantaztic</title>
+	<link rel="icon" href="https://vantaztic.com/wp-content/uploads/2023/09/cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://vantaztic.com/wp-content/uploads/2023/09/cropped-favicon-192x192.png" sizes="192x192" />
+    
+    <link rel="stylesheet" href="./assets/bootstrap532/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css?h=0516002ac6166f9bc5a60df257b0e1f8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome5-overrides.min.css?h=37efe7e508357f382d0a5b2b73cd47ee">
+    <link rel="stylesheet" href="./assets/css/admin.css">
+    
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    
+                    <!-- 
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-people">
+                             <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+                        </svg>
+                    </div> -->
+
+                    <div class="sidebar-brand-text mx-3 text-align:center">
+                        <img src="./assets/img/vantaztic_logo.png" height="30px" />
+                    </div>
+                </a>
+                <hr class="sidebar-divider my-0">
+
+                <!--//sidebar menu-->
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item">
+                        <a class="nav-link disabled" href="javascript:void(0)">
+                        <i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+                    </li>
+                    
+                    <li class="nav-item"></li>
+                    
+                    <!--//
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:util.modalShow('equipmentmodal')">
+                        <i class="fas fa-truck"></i>
+                        <span>Equipment</span></a>
+                    </li>
+                    -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:util.modalShow('equipmentmodal')">
+                        <i class="fas fa-cubes"></i>
+                        <span>Equipment</span></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:admin.showCartModal()">
+                            <i class="fas fa-shopping-bag"></i>
+                        <span>
+                            PO Cart<span id="bell-badge" class="badge bg-danger cart-badge">0</span>
+                        </span></a>
+                    </li>
+
+                    <!--//
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                    -->
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        
+                        <!--//navbar -->
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"></div>
+                        </form>
+
+                        <ul class="navbar-nav flex-nowrap ms-auto" >
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="me-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+<!--                             
+                            <li class="nav-item dropdown no-arrow mx-1" >
+
+                                <div class="nav-item dropdown no-arrow" id="ddown" onclick="javascript:admin.showcart()">
+                                    <a data-toggle="tooltip" title="View Shopping Cart" 
+                                        class="dropdown-toggle nav-link" 
+                                        aria-expanded="false" 
+                                        data-bs-toggle="dropdown" 
+                                        href="void(0)">
+                                        <span id="bell-badges" class="badge bg-danger count-notif badge-counter">0</span>
+                                        <i class="fas fa-shopping-cart fa-fw"></i>
+                                    </a>
+                                
+                                    <div id='dropdowner' class="dropdownerz dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">Cart Content</h6>
+                                        
+                                        <div id="cartcontent">                                  
+                                        </div>
+                                        ====take out to=== 
+                                        <a class="dropdown-item text-center small text-blue-500" href="#">CREATE PURCHASE ORDER</a> 
+                                        <div id="bttnplace" class="dropdown-item d-flex justify-content-center">
+                                            <a class="btn btn-success text-center small text-blue-500" role="button" href="javascript:admin.purchaseOrder()">
+                                                <i class="fa fa-pencil-square-o"></i> PURCHASE ORDER
+                                            </a>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </li> -->
+
+                             <!--// ENVELOPE IS FOR FOLLOW-UP OR 
+                             // ITEMS THAT ARE DUE , RENTED ETC-->
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow">
+                                    <!--//
+                                    <a data-toggle="tooltip" title="For Rent approval" class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#">
+                                        <i class="fas fa-truck fa-fw"></i>
+                                        <span id="rent-badge" class="badge bg-danger count-notif badge-counter">0</span>
+                                    </a>
+                                    
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg?h=fefb30b61c8459a66bd338b7d790c3d5">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
+                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg?h=5d142be9441885f0935b84cf739d4112">
+                                                <div class="status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
+                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg?h=c5166867f10a4e454b5b2ae8d63268b3">
+                                                <div class="bg-warning status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="dropdown-list-image me-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg?h=35dc45edbcda6b3fc752dab2b0f082ea">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="fw-bold">
+                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </div>
+                                    //-->
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
+
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow">
+<!--                                     
+                                    <a data-toggle="tooltip" title="For Sale approval" class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="">
+                                        <i class="fas fa-money fa-fw"></i>
+                                        <span id="sale-badge" class="badge bg-danger count-notif badge-counter">0</span>
+                                    </a>
+                                  -->
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-end" aria-labelledby="alertsDropdown"></div>
+                            </li>
+
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            
+                            <!--//avatar-->
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="javascript:void(0)">
+                                        <span id='xname' class="d-none d-lg-inline me-2 text-gray-600 small"></span>
+                                        <img id="xpic" class="border rounded-circle img-profile" src="">
+                                    </a>
+                                    
+                                    <!--//
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in"><a class="dropdown-item" href="#"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a>
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                    -->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <!--//center display-->
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-4">Admin</h3>
+                        <div id="ip">ip</div>
+                    </div>
+                    
+                    <div class="card shadow">
+                        
+                        <!--// page display title -->
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 fw-bold">Equipment Inventory</p>
+                        </div>
+                       
+                        <div class="container-fluid p-0">
+                            <div class="row g-0">
+                       
+                            </div>
+                        </div>
+
+                        <div class="card-body">
+                            <!--//search box-->
+                            <div class="row">
+                                <div class="col-md-3 text-nowrap">
+                                    <label for="filter_type">Filter by Type</label>
+                                    <select onchange="javascript:admin.filterBy()" class="form-control" id="filter_type" name="filter_type">
+                                        <!-- <option value="All" selected>All</option>	 -->
+                                        <option value="Container" selected>Container</option>
+                                        <option value="Genset">Genset</option>
+                                        <option value="Chassis">Chassis</option>
+                                        <option value="Reefer">Reefer</option>
+                                        <option value="Portalet">Portalet</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-3 text-nowrap">
+                                    <label for="filter_status">Filter by Status</label>
+                                    <select onchange="javascript:admin.filterBy()" class="form-control" id="filter_status" name="filter_status">
+                                        <!-- <option value="All">All</option>	 -->
+                                        <option value="0" selected>On Hand</option> <!--//slect all inventory first-->
+                                        <option value="1">For Approval</option>
+                                        <option value="2">Approved</option>
+                                        <option value="3">Released</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--//table equipment-->
+                            <div id="tabinfo" class="card-body row">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <!--                                         
+                                      <button class="nav-link active" id="nav-po-tab" data-bs-toggle="tab" data-bs-target="#nav-po" type="button" role="tab" aria-controls="nav-po" aria-selected="true">PO Details</button>
+                                      <button class="nav-link" id="nav-client-tab" data-bs-toggle="tab" data-bs-target="#nav-client" type="button" role="tab" aria-controls="nav-client" aria-selected="false">Client Info</button>
+                                       -->
+                                    </div>
+                                </nav>
+                                <!--//this is nav content -->
+                                <div class="tab-content" id="nav-tabContent">
+                                    <div class="tab-pane fade show active" id="nav-po" role="tabpanel" aria-labelledby="nav-po-tab">
+                                        <!--//write po details here-->
+                                    </div>
+                                    <div class="tab-pane fade" id="nav-client" role="tabpanel" aria-labelledby="nav-client-tab">
+                                        <!--//write client details here -->
+                                    </div>
+                                </div>
+                            </div><!--//end tab-->
+
+                        </div><!--// end card-body //-->
+                    </div><!--// end card-shadow //===-->
+                </div>
+            </div>
+
+            <!--//insert modals-->
+            
+            <!--//purchase order cart modal-->
+            <div class="modal fade" id="pocartModal" tabindex="-1" aria-labelledby="pocartModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header modalcolor">
+                            <h4 class="modal-title"><i class="fa fa-shopping-bag fa-3x" style="font-size:17px"></i> PO Cart</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!--//modal body-->
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div id="cart-content">
+
+                                </div>
+                            </div>
+                        </div>
+                        <!--//footer-->
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" id="eqpt-save-btn" onclick="javascript:admin.purchaseOrder()" type="button">
+                            <i id="i-save" class="fa fa-shopping-bag"></i> Add to Order
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>        
+
+
+            <!--//equipment Modal for adding New Equipment in Inventory //-->
+            <div class="modal fade" id="equipmentModal" tabindex="-1" aria-labelledby="equipmentModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header modalcolor">
+                            <h4 class="modal-title"><i class="bi-pencil-square" style="font-size:17px"></i> Add Equipment</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!--//modal body-->
+                        <div class="modal-body">
+                            
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div id="equipmentPlaceHolder"></div>
+                            <!--//END ALERT-->
+
+                            <div class="container-fluid" >	
+                                <!--//form goes here -->
+                                <!--//FORM SIGNUP-->
+                                <form id="equipmentForm" class="needs-validation equipmentForm row gy-2 gx-2 align-items-center" method="GET" novalidate>
+                                
+                                <div class="row mb-4">
+                                    <!-- serial no. -->
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <label for="serial">Serial No.</label>
+                                            <input readonly type="text" id="serial" name="serial" class="form-control" />
+                                        </div>
+                                    </div>
+                                     <!-- equipment number    -->
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <label for="eqpt_no">Equipment No.</label>
+                                            <input style="text-transform: uppercase" type="text" id="eqpt_no" name="eqpt_no" class="form-control equipmentx" required />
+                                        </div>
+                                    </div>
+                                    <!-- qty     -->
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <label for="eqpt_qty">Qty.</label>
+                                            <input type="number" min="1" id="eqpt_qty" name="eqpt_qty" class="form-control equipmentx" required />
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- 2 column grid layout with text inputs for the first and last names -->
+                                <div class="row mb-4">
+                                    <div class="col">
+                                    <div class="form-outline">
+                                        <label for="equipment_type">Equipment Type</label>
+                                        
+                                        <!--// onchange ="javascript:admin.showCategory(this.value)"//-->
+
+                                        <select class="form-control equipmentx" id="equipment_type" name="equipment_type" required>
+                                            <option value="" selected>Select...</option>	
+                                            <option value="Container">Container</option>
+                                            <option value="Genset">Genset</option>
+                                            <option value="Chassis">Chassis</option>
+                                            <option value="Reefer">Reefer</option>
+                                            <option value="Portalet">Portalet</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            *Error
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looking Good!
+                                        </div>
+                                    </div>
+                                    </div>
+                                    <!--//EQPT DESCRIPTION-->
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <label style="margin-bottom:0px;" class="form-label" for="eqpt_description">Description</label>
+                                            <input type="text" class="form-control equipmentx" onclick="javascript:admin.showCategory(document.getElementById('equipment_type').value)" id="eqpt_description" name="eqpt_description"  />
+                                            <div class="invalid-feedback">
+                                                Required Field
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looking Good!
+                                            </div>
+                                        </div>
+                                    
+                                    </div>
+
+                                    <div class="col">
+                                    <div class="form-outline">
+                                        <label for="condition">Condition</label>
+                                        <select class="form-control equipmentx" id="condition" name="condition" required>
+                                        <option value="" selected>Select...</option>	
+                                        <option value="For Repair">For Repair</option>
+                                        <option value="For Cleaning">For Cleaning</option>
+                                        <option value="Brand New">Brand New</option>
+                                        <option value="Class A">Class A BNew </option>
+                                        <option value="Slightly Used">Slightly Used</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            *Error
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looking Good!
+                                        </div>
+                            
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-4">
+                                    <div class="col">
+                                    <div class="form-outline">
+                                        <label for="with-load">With Load</label>
+                                        <select class="form-control equipmentx" id="with-load" name="with-load" required>
+                                            <option value="" selected>Select...</option>	
+                                            <option value="Yes">Yes</option>
+                                            <option value="No">No</option>
+                                            <option value="NA">N/A</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            *Error
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looking Good!
+                                        </div>
+                                    
+                                    </div>
+                                    </div>
+                                    <div class="col">
+                                    <div class="form-outline">
+                                        <label for="materials">Materials</label>
+                                        <select class="form-control equipmentx" id="materials" name="materials"  required>
+                                        <option value="" selected>Select...</option>
+                                        <option value="Aluminum">Aluminum</option>
+                                        <option value="Metal">Metal</option>
+                                        <option value="NA">N/A</option>
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            *Error
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looking Good!
+                                        </div>
+                                    
+                                    </div>
+                                    </div>
+                                    
+                                    <div class="col">
+                                    <div class="form-outline">
+                                        <label class="form-label" for="price">Acquisition Price</label>
+                                        <input type="number" step="0.01" onblur="this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'" id="price" placeholder="0.00" class="form-control equipmentx" name="price" required />
+                                        <div class="invalid-feedback">
+                                            Required Field
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looking Good!
+                                        </div>
+                                    
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="sale_price">Selling Price</label>
+                                            <input type="number" step="0.01" onblur="this.parentNode.parentNode.style.backgroundColor=/^\d+(?:\.\d{1,2})?$/.test(this.value)?'inherit':'red'" id="sale_price" placeholder="0.00" class="form-control equipmentx" name="sale_price" required />
+                                            <div class="invalid-feedback">
+                                                Required Field
+                                            </div>
+                                            <div class="valid-feedback">
+                                                Looking Good!
+                                            </div>
+                                        
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="form-outline">
+                                            <label class="form-label " for="remarks">Remarks</label>
+                                            <textarea class="form-control equipmentx" id="remarks" name="remarks" rows="4"></textarea>
+                                        </div>
+                                    </div>  
+                                </div>
+                                
+                                </form>
+                                <!--//end form -->
+                                
+                            </div>
+                            <!--//end container//-->
+                        </div>
+                        <!--//footer-->
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" id="eqpt-save-btn" onclick="javascript:util.validateMe('equipmentModal','#equipmentForm','equipmentx')" type="button">
+                            <i id="i-save" class="fa fa-floppy-o"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>					
+            <!--//end equipment modal//-->
+
+            <!--//container description modal-->
+            <div class="modal fade" id="equipmentTypeModal" tabindex="-1" aria-labelledby="equipmentTypeModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header modalcolor">
+                            <h4 class="modal-title"><i class="bi-pencil-square" style="font-size:10px"></i>Equipment Type</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!--//modal body-->
+                        <div class="modal-body">
+                            
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div id="equipmentTypePlaceHolder"></div>
+                            <!--//END ALERT-->
+
+                            <div class="container-fluid" >	
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <label for="categoryType"><span id='eqpt-label'></span></label>
+                                        
+                                        <!--///javascript:admin.updateEquipment(this.value)-->
+                                        <select onclick="javascript:admin.updateEquipment(this.value)" class="form-control equipmentx" required name="categoryType" id="categoryType">
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--//end container//-->
+                    </div>
+                        <!--//footer-->
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <!--//<button class="btn btn-primary" id="category-btn" onclick="" type="button">Submit</button>//-->
+                        </div>
+                    </div>
+                </div>
+            </div>					
+
+            <!--//end container description modal-->
+
+            <!--//for tagging rent/sales modal-->
+            <div class="modal fade" id="equipmentTagModal" tabindex="-1" aria-labelledby="equipmentTagModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header modalcolor">
+                            <h4 class="modal-title"><i class="bi-pencil-square" style="font-size:10px"></i>Equipment Tag</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!--//modal body-->
+                        <div class="modal-body">
+                            
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div id="equipmentTagPlaceHolder"></div>
+                            <!--//END ALERT-->
+
+                            <div class="container-fluid" >	
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        <div id="shop-item" class="list-group list-group-flush">
+
+                                        </div>
+                                    </div>
+                                </div>        
+                                <div class="row mb-4">
+                                    <div class="col">
+                                        
+                                        <form id="uploadForm" name="uploadForm" action="https://vantaztic-api-onrender.onrender.com/postimage" enctype="multipart/form-data" method="post">
+                                            <label for="uploaded_file">Upload Deposit Slip / Cheque Image</label>
+                                            <input class="form-control equipmentxx" type="file" name="uploaded_file" id="uploaded_file" accept='image/*' required />
+                                            <input class="lets-hide" name="serial_image" id="serial_image" >
+                                            <input id="upload-btn" class="btn btn-warning lets-hide" type="submit" value="Upload">
+                                        </form>
+        
+                                        <form id="equipmentTagForm"  enctype="multipart/form-data" class="needs-validation equipmentTagForm row gy-2 gx-2 align-items-center"  novalidate>
+
+                                            <!--// ===============INSERT FORM TEMPLATE HERE ========-->
+                                            <div id="div-rent-sale">
+                                            </div><!--//end div rent sale-->
+
+                                        </form> 
+
+                                    </div>
+                                </div>
+                                   
+                            </div>
+                            <!--//end container//-->
+                        </div>
+                        <!--//footer-->
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            <button class="btn btn-primary" id="tag-save-btn" onclick="javascript:util.validateMe('equipmentTagModal','#equipmentTagForm','equipmentxx')" type="button">
+                                <i id="i-tag-save" class="fa fa-floppy-o"></i> Save
+                            </button>
+                        </div>
+                    </div>
+                </div>
+           </div>
+            <!--//END for tagging rent/sales modals-->
+            
+
+            <!--//image Modal//-->
+            <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header modalcolor">
+                            <h4 class="modal-title"><i class="fa fa-image-o" style="font-size:17px"></i>View Attachment</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!--//modal body-->
+                        <div class="modal-body">
+                            
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div id="imagePlaceHolder"></div>
+                            <!--//END ALERT-->
+
+                            <div class="container-fluid" >	
+                                <!--//form goes here -->
+                                <!--//FORM SIGNUP-->
+                                
+                                <div class="row mb-4">
+                                    <div class="col">
+                                    <img id="imagePreview" src="" height="600">   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!--//end container//-->
+                        </div>
+                        <!--//footer-->
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>					
+
+           <!--// for yes/no modal -->
+           	<!--//BOOKING TYPE //-->
+               <div class="modal fade" id="msgModal" tabindex="-1" aria-labelledby="msgModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header modalcolor">
+                        <h5 class="modal-title" id="msgModalTitle">Transaction Confirm</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            
+                        </button>
+                        </div>
+                        
+                        <div class="modal-body">
+                            
+                            <div class="loader d-inline p-2">
+                                <div class='lets-hide' id="xid"></div>
+                                <div class='lets-hide' id="xtype"></div>
+                                
+                                <div class="d-inline p-2">
+                                    
+                                    <div class="mb-4 text-center">
+                                        <i class="fa fa-question-circle fa-5x bigicon"></i>
+                                    </div>
+                                    
+                                    <!--
+                                    <div class="mb-4 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="95" height="95" fill="currentColor" class="bigicon bi bi-question-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="mb-4 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"  width="85" height="85" fill="currentColor" class="text-danger bi bi-check-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                                        </svg>
+                                    </div>
+                                    -->
+
+                                    <div id='xmsg' class="text-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-5" type="button" onclick="javascript:dash.equipmentApprove();" >Yes</button>
+                            <button class="btn btn-danger mt-5" type="button" data-bs-dismiss="modal" >No</button>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--// end for yes/no modal -->
+           
+            <!--//end modals-->
+            
+            <!--//for Toast-->
+            <div id="snackbar"></div>
+            
+            <!--//footer -->
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Vantaztic 2023</span></div>
+                </div>
+            </footer>
+        </div>
+        
+        <a class="border rounded d-inline scroll-to-top" href="javascript:util.scrollsTo('page-top')"><i class="fas fa-angle-up"></i></a>
+    </div>
+    
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="./assets/bootstrap532/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    
+    <!--//socket.io-->
+    <script src="https://vantaztic-api-onrender.onrender.com/socket.io/socket.io.js"></script>
+   
+    <!-- <script src="http://192.168.214.221:10000/socket.io/socket.io.js"></script> -->
+    
+    <!-- <script src="assets/js/bs-init.js?h=e2b0d57f2c4a9b0d13919304f87f79ae"></script> -->
+    <script src="./assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
+    
+<script src="./assets/js/util.js?v=1"></script>
+<script src="./assets/js/admin.js?v=1"></script>
+    
+    
+</body>
+
+</html>

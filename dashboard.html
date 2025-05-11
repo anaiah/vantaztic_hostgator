@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta http-equiv='cache-control' content='no-cache'> 
+    <meta http-equiv='expires' content='0'> 
+    <meta http-equiv='pragma' content='no-cache'> 
+    <title>Dashboard - Vantaztic</title>
+    <link rel="icon" href="https://vantaztic.com/wp-content/uploads/2023/09/cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://vantaztic.com/wp-content/uploads/2023/09/cropped-favicon-192x192.png" sizes="192x192" />
+    
+    <link rel="stylesheet" href="./assets/bootstrap532/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css?h=0516002ac6166f9bc5a60df257b0e1f8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./assets/fonts/fontawesome5-overrides.min.css?h=37efe7e508357f382d0a5b2b73cd47ee">
+    <link rel="stylesheet" href="./assets/css/admin.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    
+                    <!-- 
+                    <div class="sidebar-brand-icon rotate-n-15">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-people">
+                            <path d="M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"></path>
+                        </svg>
+                    </div> -->
+
+                    <div class="sidebar-brand-text mx-3 text-align:center">
+                        <img src="././assets/img/vantaztic_logo.png" height="30px" />
+                    </div>
+                </a>
+                <hr class="sidebar-divider my-0">
+
+                <!--//side menu -->
+                <ul class="navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:void(0)">
+                            <i class="fas fa-bar-chart"></i><span>Dashboard</span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item"></li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:util.scrollsTo('equipment-section');javascript:dash.getPO()">
+                            <i class="fas fa-thumbs-up"></i><span>For Approval <span id="bell-badge" class="badge bg-danger cart-badge">0</span>
+                        </span>
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="javascript:dash.showPdf()">
+                            <i class="fas fa-search"></i><span>Search P.O.</span>
+                        </a>
+                    </li>
+                    
+                    <!--//
+                    <li class="nav-item"><a class="nav-link" href="login.html"><i class="far fa-user-circle"></i><span>Login</span></a></li>
+                    <li class="nav-item"><a class="nav-link" href="register.html"><i class="fas fa-user-circle"></i><span>Register</span></a></li>
+                    -->
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <!--// CONTAINER FLUID-->
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle me-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="d-none d-sm-inline-block me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"></div>
+                        </form>
+                        <ul class="navbar-nav flex-nowrap ms-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-end p-3 animated--grow-in" aria-labelledby="searchDropdown">
+                                    <form class="me-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <!-- <li class="nav-item dropdown no-arrow mx-1">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a data-toggle="tooltip" 
+                                        title="For Approval" 
+                                        class="dropdown-toggle nav-link" 
+                                        aria-expanded="false"  
+                                        href="javascript:util.scrollsTo('equipment-section');javascript:dash.getPO()">
+                                            <span id="bell-badge" class="badge bg-danger count-notif badge-counter">0</span>
+                                            <i class="fas fa-thumbs-up fa-fw"></i>
+                                    </a> -->
+                                    <!--// this is deleted temp
+                                    <div class="dropdown-menu dropdown-menu-end dropdown-list animated--grow-in">
+                                        <h6 class="dropdown-header">alerts center</h6><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a><a class="dropdown-item d-flex align-items-center" href="#">
+                                            <div class="me-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
+                                    </div>
+                                    -->
+                                <!-- </div>
+                            </li> -->
+
+                            <div class="d-none d-sm-block topbar-divider"></div>
+
+                            <!--//avatar-->
+                            <li class="nav-item dropdown no-arrow">
+                                <div class="nav-item dropdown no-arrow">
+                                    <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown" href="javascript:void(0)">
+                                        <span id='xname' class="d-none d-lg-inline me-2 text-gray-600 small"></span>
+                                        <img id="xpic" class="border rounded-circle img-profile" src="">
+                                    </a>
+                                
+                                    <div class="dropdown-menu shadow dropdown-menu-end animated--grow-in">
+                                        <!-- <a class="dropdown-item" href="./"><i class="fas fa-user fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" href="#"><i class="fas fa-cogs fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Settings</a><a class="dropdown-item" href="#"><i class="fas fa-list fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Activity log</a> -->
+                                        <!-- <div class="dropdown-divider"></div> -->
+                                        <a class="dropdown-item" href="./"><i class="fas fa-sign-out-alt fa-sm fa-fw me-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- END TOP CONTAINER-FLUID -->
+                </nav>
+                <div class="container-fluid">
+                    <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                        <h3 class="text-dark mb-0">Dashboard</h3>
+                        <div id="ip">ip</div>
+                        <!-- <a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#">
+                            <i class="fas fa-download fa-sm text-white-50"></i>&nbsp;Generate Report
+                        </a> -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-primary fw-bold text-xs mb-1"><span>OPEX</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="opex">&#8369;0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-calendar fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-success py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-success fw-bold text-xs mb-1"><span>PROFIT</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="earnings">&#8369;0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-dollar-sign fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--                         
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-info py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-info fw-bold text-xs mb-1"><span>Rent Overdue</span></div>
+                                            <div class="row g-0 align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-dark fw-bold h5 mb-0 me-3"><span id="rent-overdue">0%</span></div>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="progress progress-sm">
+                                                        style="width: 0%;" 
+                                                        <div id="rentduediv" class="progress-bar bg-info" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100" >
+                                                            <span class="visually-hidden">0%</span> 
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-clipboard-list fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-start-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col me-2">
+                                            <div class="text-uppercase text-warning fw-bold text-xs mb-1"><span>for approval(s)</span></div>
+                                            <div class="text-dark fw-bold h5 mb-0"><span id="badge-approval">0</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-comments fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Start: Chart -->
+                    <!--
+                    <div class="row">
+                        <div class="col-lg-7 col-xl-8">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0">Transactions Overview</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area" style="height:400px;">-->
+                                        <!-- <canvas data-bss-chart="{&quot;type&quot;:&quot;line&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Jan&quot;,&quot;Feb&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;Earnings&quot;,&quot;fill&quot;:true,&quot;data&quot;:[&quot;0&quot;,&quot;10000&quot;,&quot;5000&quot;,&quot;15000&quot;,&quot;10000&quot;,&quot;20000&quot;,&quot;15000&quot;,&quot;25000&quot;],&quot;backgroundColor&quot;:&quot;rgba(78, 115, 223, 0.05)&quot;,&quot;borderColor&quot;:&quot;rgba(78, 115, 223, 1)&quot;}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;},&quot;scales&quot;:{&quot;xAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;],&quot;drawOnChartArea&quot;:false},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}],&quot;yAxes&quot;:[{&quot;gridLines&quot;:{&quot;color&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;zeroLineColor&quot;:&quot;rgb(234, 236, 244)&quot;,&quot;drawBorder&quot;:false,&quot;drawTicks&quot;:false,&quot;borderDash&quot;:[&quot;2&quot;],&quot;zeroLineBorderDash&quot;:[&quot;2&quot;]},&quot;ticks&quot;:{&quot;fontColor&quot;:&quot;#858796&quot;,&quot;fontStyle&quot;:&quot;normal&quot;,&quot;padding&quot;:20}}]}}}"></canvas> -->
+                                    <!--
+                                        <canvas id="chart1" style="width:100%;max-width:600px"></canvas>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 col-xl-4">
+                            <div class="card shadow mb-4">
+                                <div class="card-header d-flex justify-content-between align-items-center">
+                                    <h6 class="text-primary fw-bold m-0">Revenue Sources</h6>
+                                    <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-bs-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                                        <div class="dropdown-menu shadow dropdown-menu-end animated--fade-in">
+                                            <p class="text-center dropdown-header">dropdown header:</p><a class="dropdown-item" href="#">&nbsp;Action</a><a class="dropdown-item" href="#">&nbsp;Another action</a>
+                                            <div class="dropdown-divider"></div><a class="dropdown-item" href="#">&nbsp;Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart-area"  style="height:400px;">-->
+                                        <!-- <canvas data-bss-chart="{&quot;type&quot;:&quot;doughnut&quot;,&quot;data&quot;:{&quot;labels&quot;:[&quot;Direct&quot;,&quot;Social&quot;,&quot;Referral&quot;],&quot;datasets&quot;:[{&quot;label&quot;:&quot;&quot;,&quot;backgroundColor&quot;:[&quot;#4e73df&quot;,&quot;#1cc88a&quot;,&quot;#36b9cc&quot;],&quot;borderColor&quot;:[&quot;#ffffff&quot;,&quot;#ffffff&quot;,&quot;#ffffff&quot;],&quot;data&quot;:[&quot;50&quot;,&quot;30&quot;,&quot;15&quot;]}]},&quot;options&quot;:{&quot;maintainAspectRatio&quot;:false,&quot;legend&quot;:{&quot;display&quot;:false,&quot;labels&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}},&quot;title&quot;:{&quot;fontStyle&quot;:&quot;normal&quot;}}}"></canvas></div> -->
+                                        <!--<canvas id="chart2"  style="width:100%;max-width:600px"></canvas>
+                                    </div>-->
+                                    <!-- <div class="text-center small mt-4">
+                                        <span class="me-2">
+                                            <i class="fas fa-circle text-primary"></i>&nbsp;Sales
+                                        </span>
+                                        <span class="me-2">
+                                            <i class="fas fa-circle text-success"></i>&nbsp;Rent
+                                        </span>
+                                        
+                                        <span class="me-2">
+                                            <i class="fas fa-circle text-info"></i>&nbsp;Others
+                                        </span>
+                                    </div> --><!--
+                                </div>
+                            </div>
+                        </div>
+                    </div>--> <!-- End: Chart -->
+
+                    <!--// start row -->
+                    <div class="row">
+                    
+                        <!--// another column but take out muna >
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-primary text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Primary</p>
+                                            <p class="text-white-50 small m-0">#4e73df</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-success text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Success</p>
+                                            <p class="text-white-50 small m-0">#1cc88a</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-info text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Info</p>
+                                            <p class="text-white-50 small m-0">#36b9cc</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-warning text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Warning</p>
+                                            <p class="text-white-50 small m-0">#f6c23e</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-danger text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Danger</p>
+                                            <p class="text-white-50 small m-0">#e74a3b</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 mb-4">
+                                    <div class="card textwhite bg-secondary text-white shadow">
+                                        <div class="card-body">
+                                            <p class="m-0">Secondary</p>
+                                            <p class="text-white-50 small m-0">#858796</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        //-->
+                    </div> <!--// end row -->
+
+
+                    <!--// insert section-->
+                    <section id="equipment-section" class="equipment">
+                        <div class="container-fluid p-0">
+                            <div class="row g-0">
+                                <div class="card shadow">
+                            
+                                    <!--// page display title -->
+                                    <div class="card-header py-3">
+                                        <p class="text-primary m-0 fw-bold">For Approvals</p>
+                                    </div>
+
+                                    <div id='searchpo' class="card-body row">
+                                        <div class="col-md-3 text-nowrap">
+
+                                            <!--TAKE OUT SEARCH  <label for="filter_type">Search By PO</label>
+                                            <input type="text"  class="form-control" id="search-po"> -->
+                                        </div>
+                                    </div>
+
+                                    <div class="d-none d-sm-block topbar-divider"></div>
+
+                                    <div id="tabinfo" class="card-body row">
+
+                                        <nav>
+                                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                              <button class="nav-link active" id="nav-po-tab" data-bs-toggle="tab" data-bs-target="#nav-po" type="button" role="tab" aria-controls="nav-po" aria-selected="true">PO Details</button>
+                                              <button class="nav-link" id="nav-client-tab" data-bs-toggle="tab" data-bs-target="#nav-client" type="button" role="tab" aria-controls="nav-client" aria-selected="false">Client Info</button>
+                                              
+                                            </div>
+                                        </nav>
+                                        <!--//this is nav content -->
+                                        <div class="tab-content" id="nav-tabContent">
+                                            <div class="tab-pane fade show active" id="nav-po" role="tabpanel" aria-labelledby="nav-po-tab">
+                                                <!--//write po details here-->
+                                            </div>
+                                            <div class="tab-pane fade" id="nav-client" role="tabpanel" aria-labelledby="nav-client-tab">
+                                                <!--//write client details here -->
+                                            </div>
+                                        </div>
+                                    </div><!--//end tab-->
+                                </div>
+                                
+                                <!--//icon to page up-->
+                                <div class="col-lg-6 text-white showcase-img" style="background: url(&quot;./assets/img/desk.jpg&quot;);"><span></span></div>
+                                
+                            </div>
+                        </div>
+                    </section>
+
+                    <!--// end section -->
+                </div><!-- end container fluid -->
+            </div>
+            
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"><span>Copyright © Vantaztic 2024</span></div>
+                </div>
+            </footer>
+
+            <div id="snackbar"></div>   
+            
+            <!--//insert modals-->
+
+            <!--//PDF Modal//-->
+            <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header modalcolor">
+                            <h4 class="modal-title"><i class="fa fa-search fa-2x" style="font-size:17px"></i>  Search P.O.</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="container-fluid" style="background-color: rgb(228, 228, 228);height:50px;" >
+                            <input type="number"  class="form-control" id="search-po" placeholder="Enter PO Number">
+                        </div>
+                        <!--//modal body-->
+                        <div class="modal-body">
+                            
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div style="background-color: rgb(235, 232, 228);" id="pdfPlaceHolder">edee</div>
+                            <!--//END ALERT-->
+
+                            <div class="container-fluid" >	
+                                <!--//form goes here -->
+                                <!--//FORM SIGNUP-->
+                                
+                                <div class="row mb-4">
+                                    <div class="col">
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!--//end container//-->
+                    </div>
+                        <!--//footer-->
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>					
+
+            <!--//end PDF modal//-->
+            
+            <!--//image Modal//-->
+            <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-fullscreen modal-dialog-scrollable">
+                    <div class="modal-content">
+                        
+                        <div class="modal-header modalcolor">
+                            <h4 class="modal-title"><i class="fa fa-image-o" style="font-size:17px"></i>View Attachment</h4>
+                            <button class="btn-close" type="button" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <!--//modal body-->
+                        <div class="modal-body">
+                            
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div id="imagePlaceHolder"></div>
+                            <!--//END ALERT-->
+
+                            <div class="container-fluid" >	
+                                <!--//form goes here -->
+                                <!--//FORM SIGNUP-->
+                                
+                                <div class="row mb-4">
+                                    <div class="col">
+                                    <img id="imagePreview" src="" height="600">   
+                                    </div>
+                                </div>
+                                
+                            </div>
+                            <!--//end container//-->
+                    </div>
+                        <!--//footer-->
+                        <div class="modal-footer">
+                            <button class="btn btn-light" type="button" data-bs-dismiss="modal">Close</button>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>					
+
+            <!--//end image modal//-->
+            
+            <!--// for yes/no modal -->
+           	<!--//BOOKING TYPE //-->
+               <div class="modal fade" id="msgModal" tabindex="-1" aria-labelledby="msgModalTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header modalcolor">
+                        <h5 class="modal-title" id="msgModalTitle">Transaction Confirm</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                            
+                        </button>
+                        </div>
+                        
+                        <div class="modal-body">
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div id="alertPlaceHolder"></div>
+
+                            <div class="loader d-inline p-2">
+                                <div class='lets-hide' id="xid"></div>
+                                <div class='lets-hide' id="xtype"></div>
+                                
+                                <div class="d-inline p-2">
+                                    
+                                    <div class="mb-4 text-center">
+                                        <i class="fa fa-question-circle fa-5x bigicon"></i>
+                                    </div>
+                                    
+                                    <!--
+                                    <div class="mb-4 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="95" height="95" fill="currentColor" class="bigicon bi bi-question-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                            <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="mb-4 text-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg"  width="85" height="85" fill="currentColor" class="text-danger bi bi-check-circle" viewBox="0 0 16 16">
+                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                            <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                                        </svg>
+                                    </div>
+                                    -->
+
+                                    <div id='xmsg' class="text-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button class="btn btn-primary mt-5" id="po_approve_btn" type="button" onclick="javascript:dash.equipmentApprove();" >
+                                <i id="i-saves" class="fa fa-floppy-o"></i> Save
+                            </button>
+                            <button class="btn btn-danger mt-5" type="button" data-bs-dismiss="modal" >No</button>		
+                        </div>
+                    </div>
+                </div>
+            </div>
+           <!--// end for yes/no modal -->
+           
+
+
+
+            <!--//end modals-->            
+
+        </div>
+        <a class="border rounded d-inline scroll-to-top" href="javascript:util.scrollsTo('page-top')"><i class="fas fa-angle-up"></i></a>
+    </div> <!--//end wrapper-->
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> -->
+    <script src="assets/bootstrap532/js/bootstrap.min.js"  crossorigin="anonymous"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.bundle.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js"></script> -->
+
+    <script src="https://gcore.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- chart -->
+    <script src="./assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
+    
+
+    <!--//socket.io-->
+    <script src="https://vantaztic-api-onrender.onrender.com/socket.io/socket.io.js"></script>
+    
+    <!-- <script src="http://192.168.214.221:10000/socket.io/socket.io.js"></script> -->
+    
+    <script src="./assets/js/util.js?v=1"></script>
+    
+    <script src="./assets/js/dashboard.js?v=1"></script>
+    <!-- <script src="./assets/js/bs-init.js"></script> -->
+   
+    
+</body>
+
+</html>
