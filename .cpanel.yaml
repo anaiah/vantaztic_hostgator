@@ -1,0 +1,4 @@
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home2/vantazti/public_htm/app/
+    - /assets/ -R images $DEPLOYPATH
