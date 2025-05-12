@@ -1,9 +1,9 @@
 deployment:
   tasks:
-    - export DEPLOYPATH=/home2/vantazti/public_htm/app/
-    - / index2.html $DEPLOYPATH
-    - / admin.html $DEPLOYPATH
-    - / dashboard.html $DEPLOYPATH
+    export DEPLOYPATH=/home2/vantazti/public_htm/app/
+    - index2.html $DEPLOYPATH
+    - admin.html $DEPLOYPATH
+    - dashboard.html $DEPLOYPATH
     - /assets/js util.js $DEPLOYPATH
     - /assets/js admin.js $DEPLOYPATH
     - /assets/js dashboard.js $DEPLOYPATH
