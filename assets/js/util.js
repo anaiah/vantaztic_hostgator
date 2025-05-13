@@ -121,6 +121,65 @@ let util ={
             input.classList.remove('is-invalid')
         })
     },
+    //==========FOR ALL THE DATA ENTRY FORM LOAD THIS FIRST TO BE ABLE TO BE VALIDATED ===//
+	loadFormValidation:(eHashFrm)=>{
+
+        console.log('===util.loadFormValidation()==', eHashFrm)
+		let aForms = [eHashFrm] 
+        let aFormx
+
+		//loop all forms
+		aForms.forEach( (element) => {
+			aFormx = document.querySelectorAll(element)
+			//console.log(aFormx[0])
+			if(aFormx){
+				let aFormz = aFormx[0]
+				//console.log(aFormz.innerHTML)
+				Array.from(aFormz.elements).forEach((input) => {
+			
+					if(!input.classList.contains('p1') &&
+						!input.classList.contains('p2')){//process only non-password field
+							input.addEventListener('keyup',(e)=>{
+								if(input.checkValidity()===false){
+									input.classList.remove('is-valid')
+									input.classList.add('is-invalid')
+									e.preventDefault()
+									e.stopPropagation()
+
+								} else {
+									input.classList.remove('is-invalid')
+									input.classList.add('is-valid')
+								} //eif
+							},false)
+
+							input.addEventListener('blur',(e)=>{
+
+								if(input.checkValidity()===false){
+									input.classList.remove('is-valid')
+									input.classList.add('is-invalid')
+									e.preventDefault()
+									e.stopPropagation()
+
+								} else {
+									input.classList.remove('is-invalid')
+									input.classList.add('is-valid')
+								} //eif
+							},false)
+					}else{ //=== if input contains pssword field
+						if(input.classList.contains('p1')){
+							if(eModal=="signupModal"){
+								util.passwordCheck(input,passwordAlert)        
+							}
+						}else{
+							util.passwordFinal(input)
+						}
+						
+					}//else password field
+
+				}) //end all get input
+			}
+		})///=====end loop form to get elements	
+	},
     //==========WHEN SUBMIT BUTTON CLICKED ==================
     validateMe: async (frmModal,frm,classX)=>{
         const forms = document.querySelectorAll(frm)
@@ -173,7 +232,7 @@ let util ={
                     //pang test -> 
                     //util.loginPost(frm,frmModal,${admin.myIp}/loginpost/${objfrm.user_name}/${objfrm.password}`)
                     //then login
-                    util.loginPost(frm,frmModal,`${myIp}/loginpost/${objfrm.user_name}/${objfrm.password}`)
+                    util.loginPost(frm,frmModal,`${myIp}/loginpost/${objfrm.uid}/${objfrm.pwd}`)
                 break
 				case "#equipmentForm":
                     const isave = document.getElementById('i-save')

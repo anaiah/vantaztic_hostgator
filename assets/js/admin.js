@@ -815,93 +815,79 @@ let admin = {
     },
 	//==,= main run
 	init : async () => {
-       console.log( 'loading admin.init()....')
-		await new Promise( resolve =>{
-			setTimeout( ()=>{
-                let authz = []
-                authz.push(util.getCookie('grp_id' ))
-                authz.push(util.getCookie('fname'))
-                //==HANDSHAKE FIRST WITH SOCKET.IO
-                const userName = { token : authz[1] , mode: 1}//full name token
-                admin.socket = io.connect(`${admin.myIp}`, {
-                    //withCredentials: true,
-                    query:`userName=${JSON.stringify(userName)}`
-                    // extraHeaders: {
-                    //   "osndp-header": "osndp"
-                    // }
-                });//========================initiate socket handshake ================
-                // admin.socket.on('logged', (msg) => {
-                //     console.log('socket.io()',msg)
-                //  })
-				//write name
-                const xname = document.getElementById('xname')
-                const xpic = document.getElementById('xpic')
-                //get name of logged user
-                xname.innerHTML = util.getCookie('fname')
-                xpic.src = util.getCookie('pic')
-                const ipaddy = document.getElementById('ip')
-                ipaddy.innerHTML = util.getCookie('ip_addy')
-                ///util.speak( util.getCookie('the_voice'))
-                util.loadModals('equipmentModal','equipmentForm','#equipmentForm','equipmentPlaceHolder') //PRE-LOAD MODALS
-                util.Toast('System Ready', 2000)
-                //// temporarily out    admin.fetchBadgeData()
-                console.log('First getMsg()')
-                admin.getMsg()
-                //============FORM SUBMIT LISTENER==========================//
-                //util.js will call this after upload-btn.click()
-                const frmupload = document.getElementById('uploadForm')
-                frmupload.addEventListener("submit", e => {
-                    const formx = e.target;
-                    fetch(`${admin.myIp}/postimage`, {
-                        method: 'POST',
-                        body: new FormData(formx),
-                        })
-                        .then( (response) => {
-                            return response.json() // if the response is a JSON object
-                        })
-                        .then( (data) =>{
-                            console.log ('postimage() value=> ', data )
-                            console.log('*****TAPOS NA PO IMAGE POST*****')
-                            util.hideModal('equipmentTagModal',2000)//then close form    
-                            admin.filterBy()
-                        })
-                         // Handle the success response object
-                        .catch( (error) => {
-                            console.log(error) // Handle the error response object
-                        });
-                    //e.preventDefault()
-                    console.log('===ADMIN ATTACHMENT JPEG FORM SUBMITTTTT===')
-                        //// keep this reference for event listener and getting value
-                        /////const eqptdesc = document.getElementById('eqpt_description')
-                        ////eqptdesc.value =  e.target.value
-                    // Prevent the default form submit
-                    e.preventDefault();    
+        util.speak( util.getCookie('the_voice'))
+        
+        console.log( 'loading admin.init()....')
+        let authz = []
+        authz.push(util.getCookie('grp_id' ))
+        authz.push(util.getCookie('fname'))
+        //==HANDSHAKE FIRST WITH SOCKET.IO
+        const userName = { token : authz[1] , mode: 1}//full name token
+        admin.socket = io.connect(`${admin.myIp}`, {
+            //withCredentials: true,
+            query:`userName=${JSON.stringify(userName)}`
+            // extraHeaders: {
+            //   "osndp-header": "osndp"
+            // }
+        });//========================initiate socket handshake ================
+        // admin.socket.on('logged', (msg) => {
+        //     console.log('socket.io()',msg)
+        //  })
+        //write name
+        const xname = document.getElementById('xname')
+        const xpic = document.getElementById('xpic')
+        //get name of logged user
+        xname.innerHTML = util.getCookie('fname')
+        xpic.src = util.getCookie('pic')
+        const ipaddy = document.getElementById('ip')
+        ipaddy.innerHTML = util.getCookie('ip_addy')
+        
+        
+        util.loadModals('equipmentModal','equipmentForm','#equipmentForm','equipmentPlaceHolder') //PRE-LOAD MODALS
+        util.Toast('System Ready', 2000)
+        //// temporarily out    admin.fetchBadgeData()
+        console.log('First getMsg()')
+        admin.getMsg()
+
+
+        //============FORM SUBMIT LISTENER==========================//
+        //util.js will call this after upload-btn.click()
+        const frmupload = document.getElementById('uploadForm')
+        frmupload.addEventListener("submit", e => {
+            const formx = e.target;
+            fetch(`${admin.myIp}/postimage`, {
+                method: 'POST',
+                body: new FormData(formx),
                 })
-                //=================END FORM SUBMIT==========================//
-				//proxy property
-				//admin.test
-				resolve()
-                console.log('Second getAll()')
-                console.log(document.getElementById('filter_type').value,document.getElementById('filter_status').value)
-                admin.getAll( document.getElementById('filter_type').value,document.getElementById('filter_status').value)
-			}, 1000)
-		})
-        //================eventlistener for dropwdown
-        // let dd = document.getElementById('ddown')
-        // let drpdown =  document.getElementById('dropdowner')
-        // dd.addEventListener('show.bs.dropdown',(e)=>{ 
-        //     //IF SHOPCART IS EMPTY DONT SHOW LIST
-        //     if(admin.shopCart.length == 0){
-        //         util.Toast('SHOPPING CART EMPTY!',2000)
-        //         e.preventDefault()
-        //         e.stopPropagation()
-        //         return false
-        //     }
-        // })
-        // drpdown.addEventListener('click', (e)=>{
-        //     e.stopPropagation()
-        //     console.log('oops..')
-        // })
+                .then( (response) => {
+                    return response.json() // if the response is a JSON object
+                })
+                .then( (data) =>{
+                    console.log ('postimage() value=> ', data )
+                    console.log('*****TAPOS NA PO IMAGE POST*****')
+                    util.hideModal('equipmentTagModal',2000)//then close form    
+                    admin.filterBy()
+                })
+                    // Handle the success response object
+                .catch( (error) => {
+                    console.log(error) // Handle the error response object
+                });
+            //e.preventDefault()
+            console.log('===ADMIN ATTACHMENT JPEG FORM SUBMITTTTT===')
+                //// keep this reference for event listener and getting value
+                /////const eqptdesc = document.getElementById('eqpt_description')
+                ////eqptdesc.value =  e.target.value
+            // Prevent the default form submit
+            e.preventDefault();    
+        })
+        //=================END FORM SUBMIT==========================//
+        //proxy property
+        //admin.test
+        
+        console.log('Second getAll()')
+        console.log(document.getElementById('filter_type').value,document.getElementById('filter_status').value)
+        admin.getAll( document.getElementById('filter_type').value,document.getElementById('filter_status').value)
+      
 	}//END MAIN
 } //======================= end admin obj==========//
 //admin.Bubbl

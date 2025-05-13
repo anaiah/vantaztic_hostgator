@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login - Vantaztic</title>
 
+    <link rel="icon" href="https://vantaztic.com/wp-content/uploads/2023/09/cropped-favicon-32x32.png" sizes="32x32" />
+    <link rel="icon" href="https://vantaztic.com/wp-content/uploads/2023/09/cropped-favicon-192x192.png" sizes="192x192" />
+    
     <link rel="stylesheet" href="assets/bootstrap532/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     
@@ -17,17 +20,119 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Alfa+Slab+One&display=swap">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Angkor&display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap">
-	    
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css?h=37efe7e508357f382d0a5b2b73cd47ee">
-    <link rel="stylesheet" href="assets/css/style.css">
+
     
+    <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css?h=37efe7e508357f382d0a5b2b73cd47ee"> -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    
+    <style>
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+        #myBody{
+            background-image: url('https://vantaztic.com/wp-content/uploads/2023/05/FUJITA-EEI-JOINT-VENTURES-1-1-min.jpg');
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+        .fade-in.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        #mylogo a img {
+            display:block;
+            margin:auto;
+            
+        }
+    </style>
+
 </head>
 
-<body class="bg-gradient-primary">
+<body id="myBody">
     <div class="container">
         <div class="row justify-content-center">
+
+            <div class="position-relative overflow-hidden min-vh-100 d-flex align-items-center justify-content-center">
+                <div class="d-flex align-items-center justify-content-center w-100">
+                  <div class="row justify-content-center w-100">
+                    <div class="col-md-8 col-lg-6 col-xxl-3">
+          
+                       <!--//START OF CARD-->
+                      
+                       <div class="card mb-0 fade-in" id="myCard">
+                        <div class="card-body w-70" >
+                          <!--//company logo -->
+                          <div id="mylogo" class="mb-2">
+                            <a href="/index2.html">
+                                <img src="/assets/img/vantaztic_logo.png"  width="180" alt="" />
+                            </a>
+              
+                          </div>
+          
+                          <p style="margin-top:20px" class="text-center">Vantaztic Incorporated</p>
+                          <!--//end company logo -->
+                          <form id="loginForm" name="loginForm" class="needs-validation">
+                            
+                            <!--//=== ALERT CONTAINER!!!-->
+                            <div id="loginPlaceHolder"></div>
+                            <!--//END ALERT-->
+          
+                            <div class="mb-3">
+                              <i class="fa fa-user" style="color:blue"></i>
+                              <label for="uid" class="form-label">Username</label>
+                              <input type="email" class="form-control login" id="uid" name="uid" aria-describedby="emailHelp" required>
+                              <div class="invalid-feedback">
+                                Enter valid email address
+                              </div>
+                              <div class="valid-feedback">
+                                  Looking Good!
+                              </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                              <i class="fa fa-lock" style="color:blue"></i>
+                              <label for="pwd" class="form-label">Password</label>
+                              <input type="password" class="form-control login" id="pwd" name="pwd" required>
+                              <div class="invalid-feedback">
+                                Enter valid password
+                              </div>
+                              <div class="valid-feedback">
+                                  Looking Good!
+                              </div>
+                          
+                            </div>
+          
+                            <div class="mb-4">
+                              
+                              <div class="row">
+                                <span id="hub" style="font-size: 10px;"></span>
+                              </div>
+                            </div>
+                            
+                        
+                            
+                            <div class="modal-footer">
+                              <!-- <button class="btn btn-light"  type="button" data-bs-dismiss="modal">Close</button> -->
+                              <button class="btn btn-primary"  id="loginbtn" onclick="util.validateMe('loginModal','#loginForm','login')" type="button">
+                                <i class="fa fa-sign-in"></i>
+                                &nbsp;Login</button>
+                            </div>
+          
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
 <!--//insert modals-->
 <!--//login modalbox-->
 <div class="modal fade" id="loginModal" tabindex="-1"  aria-labelledby="loginModalLabel" aria-hidden="true">
@@ -56,7 +161,7 @@
                             <i class="bi-person-fill" style="color:#FF8400;"></i> Username
                         </label>
                         <!-- <input type="email" onblur="ajax.validateMe(this,'#loginForm','logx','loginbtn')" class="form-control logx" id="usrname" name="usrname" placeholder="Enter email" required> -->
-                        <input type="email"  class="form-control logx" id="user_name" name="user_name" placeholder="Enter email" required>
+                        <input type="email"  class="form-control logx" id="xuser_name" name="xuser_name" placeholder="Enter email" required>
                         <div class="invalid-feedback">
                             Enter valid email address
                         </div>
@@ -70,7 +175,7 @@
                             <i class="bi-lock-fill" style="color:#FF8400;"></i>  Password
                         </label>
                         <!-- <input type="text" onblur="ajax.validateMe(this,'#loginForm','logx','loginbtn')" class="form-control logx" id="psw" name="psw" placeholder="Enter password" required> -->
-                        <input type="password" minlength="5" class="form-control logx" id="password" name="password" placeholder="Enter password (min. 5 char)" required>
+                        <input type="password" minlength="5" class="form-control logx" id="xpassword" name="xpassword" placeholder="Enter password (min. 5 char)" required>
                         <div class="invalid-feedback">
                             Enter valid password
                         </div>
@@ -152,7 +257,7 @@
             </div>
         </div>
     </div>
-    </div>        
+</div>        
   
     
 <!--//alert modal-->
@@ -185,13 +290,20 @@
     </div>
 <!--//end modals-->
 <div id="snackbar"></div>
-
     <script src="assets/bootstrap532/js/bootstrap.min.js"  crossorigin="anonymous"></script>
     <!-- <script src="assets/js/bs-init.js?h=e2b0d57f2c4a9b0d13919304f87f79ae"></script> -->
     <script src="assets/js/theme.js?h=79f403485707cf2617c5bc5a2d386bb0"></script>
     <script src="assets/js/util.js?v=1"></script>
     <script src="assets/js/login.js?v=1"></script>
     
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // document.getElementById('myBody').style.backgroundImage = `url('https://vantaztic.com/wp-content/uploads/2023/05/FUJITA-EEI-JOINT-VENTURES-1-1-min.jpg')`
+        setTimeout(() => {
+          document.getElementById('myCard').classList.add('show');// show login  card
+      }, 2000); // Delay of 1000 milliseconds (1 second)
+    })  
+    </script>
 </body>
 
 </html>

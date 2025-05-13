@@ -543,6 +543,9 @@ let dash = {
 	//==,= main run
 	init : async () => {
         console.log('dash.init() .....')
+        
+        util.speak( util.getCookie('the_voice'))
+        
         let authz = []
         authz.push(util.getCookie('grp_id' ))
         authz.push(util.getCookie('fname'))
@@ -565,7 +568,8 @@ let dash = {
         //get ip address
         const ipaddy = document.getElementById('ip')
         ipaddy.innerHTML = util.getCookie('ip_addy')
-        util.speak( util.getCookie('the_voice'))
+        
+        
         util.Toast('System Ready', 2000)
         //// balik na
         dash.fetchBadgeData() // update badges
