@@ -554,9 +554,11 @@ let dash = {
             var options = {
                 series: mergedData,
                 chart: {
-                type: 'bar',
-                width:500,
-                height: 350
+                    redrawOnParentResize: false,
+                    redrawOnWindowResize: false,
+                    width: 600,
+                    height: 350,
+                    type: 'bar'
               },
               plotOptions: {
                 bar: {
