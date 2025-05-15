@@ -92,17 +92,19 @@ let util ={
         alertPlaceholder.innerHTML=""
         alertPlaceholder.append(wrapper)
     },//=======alert msg
-    Toast: (msg,nTimeOut)=> {
-        // Get the snackbar DIV
-        var x = document.getElementById("snackbar");
-        x.innerHTML=msg
-        // Add the "show" class to DIV
-        x.className = "show";
-        // After 3 seconds, remove the show class from DIV
-        setTimeout(function(){ 
-            x.className = x.className.replace("show", "hid"); 
-        }, nTimeOut);
-    },
+    
+    // Toast: (msg,nTimeOut)=> {
+    //     // Get the snackbar DIV
+    //     var x = document.getElementById("snackbar");
+    //     x.innerHTML=msg
+    //     // Add the "show" class to DIV
+    //     x.className = "show";
+    //     // After 3 seconds, remove the show class from DIV
+    //     setTimeout(function(){ 
+    //         x.className = x.className.replace("show", "hid"); 
+    //     }, nTimeOut);
+    // },
+
     //===============END MESSENGER ===================
     //==============FORM FUNCS ===========
     clearBox:function(){
@@ -380,6 +382,7 @@ let util ={
                     util.setCookie('grp_id',data.grp_id,1)
                     util.setCookie('approver_type',data.approver_type,1)
                     util.setCookie('ip_addy',data.ip_addy,1)
+
                     if(data.grp_id=="2"){
                         console.log('new merrylle')
                         window.location.replace(`/admin`)
@@ -389,7 +392,9 @@ let util ={
                         util.otpemail = data.email
                         util.sendotp(${admin.myIp}/sendotp/${data.email}/${data.fname}`)
                        */
-                        window.location.replace( `/dashboard` )
+                        ////window.location.replace( `/dashboard` )
+                        window.location.replace( `/main` )
+
                         //location.href = 'https://vantaztic.com/app/dashboard.html'
                     }
                     return true
@@ -799,6 +804,7 @@ let util ={
                //// takeout muna  admin.fetchBadgeData()
             },false)       
         }//eif equipmentTagModal
+        
         //================login,equipment andsignup  listener
         let aForms = [eHashModalFrm] 
         let aFormx
@@ -806,6 +812,8 @@ let util ={
         if(eModal=="signupModal"){
             let passwordAlert = document.getElementById("password-alert");
         }
+
+
         //loop all forms
         aForms.forEach( (element) => {
             aFormx = document.querySelectorAll(element)
@@ -900,7 +908,7 @@ let util ={
             util.hideModal('signupModal',2000)
         })
         .catch((error) => {
-            util.Toast(`Error:, ${error.message}`,3000)
+            //util.Toast(`Error:, ${error.message}`,3000)
             console.error('Error:', error)
         })    
         return true

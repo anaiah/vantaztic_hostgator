@@ -3,6 +3,9 @@ author : Carlo O. Dominguez
 */
 let dash = {
 	socket:null,
+    myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
+    //myIp: `https://vantaztic-api-onrender.onrender.com`,
+    
     approver_type:null,
     resolver:async (xmsg,xtype) => {
         console.log('RESOLVER()')
@@ -37,6 +40,7 @@ let dash = {
 	//main func
     getMsg:()=>{
         console.log('dash.getMsdg()===')
+        
         //when msg receive
         dash.socket.on('admin',(msg)=>{
             const xname = util.getCookie("fname")
@@ -52,7 +56,7 @@ let dash = {
             }
         })
         dash.socket.on('logged', (msg) => {
-            util.Toast(msg,3000)
+            //util.Toast(msg,3000)
             util.clearBox()
             /*
             var item = document.getElementById("xmsg")
@@ -60,6 +64,7 @@ let dash = {
             */
         })
     },
+
     dataforTag:null,
     updateBadge : (xdata) =>{
         const badge = document.getElementById('bell-badge')
@@ -67,164 +72,101 @@ let dash = {
         badge.innerHTML = xdata.length
         badges.innerHTML = xdata.length
     },
+
+    //collapse sidebar
+    collapz: () =>{
+        /*
+        if( ! document.getElementById("sidebarCollapse") ){
+            //document.getElementById('filter_number').focus()
+        }else{
+            document.getElementById("sidebarCollapse").click()
+           // document.getElementById('filter_number').focus()
+        }
+           */
+        /// take out muna document.getElementById("sidebarCollapse").click()
+        //focus on emp number claims filter
+    },
+
+    formatdate:(xdate)=>{
+        // Parse into a Date object
+        const date = new Date(xdate);
+
+        // Extract parts
+        const month = date.getMonth() + 1; // months are 0-based
+        const day = date.getDate();
+        const year = date.getFullYear();
+
+        // Format as M/D/Y
+        const formattedDate = `${month}/${day}/${year}`;
+
+        //console.log('xdate',formattedDate)
+        return formattedDate
+    },
+
+    poData:null,
+       
     // ==== retrieve PO for approval ==//
-    getPO: async () => {
-        await fetch(`https://vantaztic-api-onrender.onrender.com/getpo/${util.getCookie('approver_type')}`,{
+    getPO:  () => {
+        
+        fetch(`${dash.myIp}/getpo/${util.getCookie('approver_type')}`,{
             cache:'reload'
         })
         .then((response) => {  //promise... then 
             return response.json();
         })
         .then( (data) => {
-            //=== reset nav tabs
-            //=== reset nav tabs
-            document.getElementById('nav-tab').innerHTML = ""
-            document.getElementById('nav-po').innerHTML = ""
-            document.getElementById('nav-po').innerHTML = "NO DATA TO SHOW!"
-            document.getElementById('nav-client').innerHTML = ""
+           
             if( data.found ){
-                dash.updateBadge(data.result) //===update badge
-                let xdata, xstat, xprice, imgId = 0, cartid = 0, inputcartid, xicon = "", xclient = ""
-                console.log('== dashboard.js getPO()***',data.result)
-                document.getElementById('nav-tab').innerHTML = `
-                <button class="nav-link active" id="nav-po-tab" data-bs-toggle="tab" data-bs-target="#nav-po" 
-                    type="button" role="tab" aria-controls="nav-po" aria-selected="true">Equipment Details</button>
-                <button class="nav-link" id="nav-client-tab" data-bs-toggle="tab" data-bs-target="#nav-client" 
-                    type="button" role="tab" aria-controls="nav-client" aria-selected="false">Client Info</button>
-                `
+
+                //console.log('rec', data.result[0])
+               
+                let ydata = [], obj
+                
                 for (let key in data.result) {
-                    imgId++;  cartid ++
-                    ximage = `assets/resized/${data.result[key].po_number}.jpg`
-                    let xdet = JSON.parse(JSON.stringify(data.result[key].details))
-                    for(let xx in xdet ){//=================next FOR NEXT
-                        let xdets = JSON.parse(xdet[xx])
-                        //=======PO/ SI HEader =======//
-                        xicon += `<span class='eqptno' >
-                            <b>PO # ${data.result[key].po_number}  -  INV # ${data.result[key].invoice_number.toUpperCase()}<br>
-                            </span>`
-                        xicon += `
-                            <table width="70%" class='clientelle'>
-                            <tr>
-                            <td valign=top  >Transaction</td>
-                            <td>:</td>
-                            <td valign=top >${data.result[key].transaction}</td>
-                            </tr>
-                            <tr>
-                            <td valign=top  >Type </td>
-                            <td>:</td>
-                            <td valign=top >${xdets.type}</td>
-                            </tr>
-                            <tr>
-                            <td valign=top  >Date Created</td>
-                            <td>:</td>
-                            <td valign=top >${util.formatDate2(data.result[key].po_date)}</td>
-                            </tr>
-                            `
-                        xicon +=`
-                            <tr>
-                            <td valign=top >Eqpt No.</td>
-                            <td>:</td>
-                            <td valign=top >${data.result[key].eqpt_no}</td>
-                            </tr>
-                            <tr>
-                            <td valign=top >Description</td>
-                            <td>:</td>
-                            <td valign=top >${xdets.description}</td>
-                            </tr>
-                            <tr>
-                            <td valign=top >Qty</td>
-                            <td>:</td>
-                            <td valign=top >${xdets.qty}</td>
-                            </tr>
-                            <tr>
-                            <td valign=top >Acquired Price</td>
-                            <td>:</td>
-                            <td  valign=top align=left>${util.addCommas(xdets.price.toFixed(2))}</td>
-                            </tr>
-                            <tr>
-                            <td valign=top >Selling Price</td>
-                            <td>:</td>
-                            <td  valign=top align=left>${util.addCommas(xdets.sale.toFixed(2))}</td>
-                            </tr>
-                            <tr>
-                            <td valign=top >Total</td>
-                            <td>:</td>
-                            <td  valign=top align=left>${util.addCommas(xdets.total.toFixed(2))}</td>
-                            </tr>`
-                        xicon+=`
-                            <tr>
-                                <td colspan=3 align=left valign='bottom'>
-                                    <div class="d-sm-flex justify-content-between" >
-                                        <button type="button" class="btn btn-primary btn-sm" 
-                                        onclick="javascript:dash.showApprover(
-                                        '${util.getCookie('approver_type')}',
-                                        '${data.result[key].po_number}')">
-                                        <i class="fa fa-thumbs-up"></i> Approve PO# ${data.result[key].po_number}</button>
-                                        &nbsp;
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                            <td colspan=3><hr></td>
-                            </tr>
-                            `
-                    }//================ end 2ND FOR NEXT
-                    xicon +='</table>'
-                    /* take out grand total
-                    xicon+=`
-                        <tr>
-                        <td colspan=2 align=left>&nbsp;</td>
-                        <td>
-                        <span id='gtotal'>${util.addCommas(data.result[key].grand_total.toFixed(2))}</span>
-                        </td>
-                        </tr>
-                        </table>
-                    `*/
-                    inputcartid = "qty_"+cartid
-                    document.getElementById('nav-po').innerHTML = xicon
-                    xclient += `
-                    <table width="70%" class='clientelle'>
-                    <tr>
-                    <td valign=top  width='25%'>PO : </td>
-                    <td valign=top  width='45%'>${data.result[key].po_number}</td>
-                    </tr>
-                    <tr>
-                    <td valign=top  width='25%'>Invoice : </td>
-                    <td valign=top  width='45%'>${data.result[key].invoice_number.toUpperCase()}</td>
-                    </tr>
-                    <tr>
-                    <td valign=top  width='25%'>Client : </td>
-                    <td valign=top  width='45%'>${data.result[key].client_name}</td>
-                    </tr>
-                    <tr>
-                    <td valign=top >Company : </td>
-                    <td valign=top >${data.result[key].client_company}</td>
-                    </tr>
-                    <tr>
-                    <td valign=top >Address : </td>
-                    <td valign=top >${data.result[key].client_address}</td>
-                    </tr>
-                    <tr>
-                    <td valign=top >Contact # : </td>
-                    <td valign=top >${data.result[key].client_phone}</td>
-                    </tr>
-                    <tr>
-                    <td valign=top >Email : </td>
-                    <td valign=top >${data.result[key].client_email.toLowerCase()}</td>
-                    </tr>
-                    </table>
-                    <br>
-                    <span class="attach">Remarks:</span><br>
-                     ${data.result[key].client_remarks.toUpperCase()}<br>
-                    <span class="attach">Attachment:</span><br>
-                    <img id="image-${imgId}" class="imgpreview" src="${ximage}" height=80 onclick="javascript:dash.showImage(this.id,this.src)">
-                    </span>`
-                    xclient+="<hr>"
-                    document.getElementById('nav-client').innerHTML = xclient 
-                }//========================== end for loop====================
+
+                    xdetails = JSON.parse(data.result[key].details)
+                    
+                    //console.log(xdetails)
+                    //console.log(data.result[key])
+        
+                    obj = {}
+                    obj.po_number = data.result[key].po_number
+                    obj.invoice_number  = data.result[key].invoice_number
+                    obj.qty = xdetails.qty
+                    obj.total = data.result[key].grand_total
+                    obj.client = data.result[key].client_name
+                    obj.company = data.result[key].client_company
+                    obj.eqpt_no = data.result[key].eqpt_no
+                    obj.type = xdetails.type
+                    obj.transaction = data.result[key].transaction
+                    obj.serial = xdetails.serial
+                    obj.description = xdetails.description
+                    obj.remarks = data.result[key].client_remarks
+
+                    obj.avatarurl = `https://app.vantaztic.com/assets/resized/${data.result[key].po_number.replace("TEST_","")}.jpg`
+                    
+                    // Parse into a Date object
+                    obj.po_date = dash.formatdate(data.result[key].po_date)
+
+                    ydata.push( obj )
+                    
+                }//========================== end for loop====================im
+                // if want to chck data -> use console.log(ydata)
+                console.log(ydata)
+                                
+                dash.ctrlExt.loadPo(ydata)
+               
+                obj={}
+
+                dash.loadbarChart()
+
+                //////// BALIK NATENN PAG DI UBRA, how to call method in Myapp.Application  window.myapp.test(ydata[0]);
+                
+                util.speak(`You have  ${ydata.length} Purchase Order for Approval!`)
+
             }else{
-                azero = []
-                dash.updateBadge(azero) //===update badge
+                util.speak('No Purchase Order for approval!')
+                //dash.updateBadge(azero) //===update badge
             }//eif
         })
         .catch((error) => {
@@ -232,6 +174,11 @@ let dash = {
             console.error('Error:', error)
         })
     },
+
+    appExt: null,
+    ctrlExt:null,
+    selected_po:null,
+
     //=============show pdf
     showPdf: async() => {
         const configObj = { keyboard: false, backdrop:'static' }
@@ -250,27 +197,22 @@ let dash = {
         const configObj = { keyboard: false, backdrop:'static' }
         let msgmodal =  new bootstrap.Modal(document.getElementById('msgModal'),configObj);
         const xmsg = document.getElementById('xmsg')
+
         xmsg.innerHTML = `Are you sure you want to Approve PO# ${po_number}?`
+
         let xid = document.getElementById('xid')
         xid.innerHTML=`${po_number}`
+        
         let xtype = document.getElementById('xtype')
         xtype.innerHTML=`${approver_type}`
+        
         msgmodal.show()
     },
-    //==================tag equipment as approved
-    equipmentApprove: async ()=>{
-        let xid = document.getElementById('xid')
-        let xtype = document.getElementById('xtype')
-        console.log('==dash.equipmentApprove()=== approving ', xid.innerHTML)
-        document.getElementById('alertPlaceHolder').innerHTML = "Saving Please Wait..."
-        const po_btn = document.getElementById('po_approve_btn')
-        po_btn.disabled = true
-        const i_saves = document.getElementById('i-saves')
-        i_saves.classList.add('fa-pulse')
-        i_saves.classList.add('fa-spinner')
-        i_saves.classList.add('fa-fw')
-        document.getElementById('alertPlaceHolder').innerHTML = ""
-        fetch(`https://vantaztic-api-onrender.onrender.com/equipmentapprove/${xid.innerHTML}/${xtype.innerHTML}/${util.formatDate()}`,{
+
+    //NEW EQUIPMENT APPROVVED
+    equipmentApprove: async(po,si,id)=>{
+    
+        fetch(`${dash.myIp}/equipmentapprove/${po}/${si}/${id}/${util.formatDate()}`,{
             cache: 'reload',
             method:'PUT'
         })
@@ -278,48 +220,24 @@ let dash = {
             return response.json();
         })
         .then((data) => {
-            console.log('***FETCH BADGE DATA NOW***')
-            //balik na
-            dash.fetchBadgeData() // update badges
-            .then( x=>{
-                if(x){
-                    document.getElementById('alertPlaceHolder').innerHTML = ""
-                    i_saves.classList.remove('fa-pulse')
-                    i_saves.classList.remove('fa-spinner')
-                    i_saves.classList.remove('fa-fw')
-                    i_saves.classList.add('fa-floppy-o')
-                    po_btn.disabled = false
-                    util.hideModal('msgModal',2000)  
-                    util.speak(data.voice)
-                    //======emit message to sales people=====//
-                    //send message to super users
-                    const sendmsg = {
-                        msg: "Attention, there's one Transaction approved, please check it on your web apps!"
-                    }
-                    //emit message and remind sales team
-                    dash.socket.emit('sales', JSON.stringify(sendmsg))
-                    dash.getPO()
-                }
-            })	
-            //// remove muna mga barchart
-            // /* ==== update chart also ========*/
-            // let barstat = Chart.getChart("chart1")
-            // if(barstat!==undefined){
-            //     barstat.destroy()
-            // }
-            // let piestat = Chart.getChart("chart2")
-            // if(piestat!==undefined){
-            //     piestat.destroy()
-            // }
-            // dash.barChart()
-            // dash.pieChart()
+            util.speak(data.voice)
+            //======emit message to sales people=====//
+            //send message to super users
+            const sendmsg = {
+                msg: "Attention, there's one Transaction approved, please check it on your web apps!"
+            }
+            //emit message and remind sales team
+            dash.socket.emit('sales', JSON.stringify(sendmsg))
+            dash.getPO()
+            
         })
         .catch((error) => {
             console.error('Error:', error)
         })    
     },
+
     //show modal and iamge
-    showImage: async (id,src) => {
+    showImage: async (src) => {
         //console.log(id,src)
         const configObj = { keyboard: false, backdrop:'static' }
         let ximagemodal =  new bootstrap.Modal(document.getElementById('imageModal'),configObj);
@@ -331,6 +249,7 @@ let dash = {
         },false)
     },
     fetchBadgeData: async()=>{ //first to fire to update badge
+        
         return new Promise((resolve, reject)=> {
             fetch(`https://vantaztic-api-onrender.onrender.com/fetchinitdata`,{
                 cache: 'reload'
@@ -340,32 +259,15 @@ let dash = {
             })
             .then((data) => {
                 console.log('dash.fetchbadgeData() ',data)
-                //////////==== tanggal muna mga badgeupdate badage for pending approv
-                // const badge = document.getElementById('bell-badge')
-                // // badge.innerHTML = data.result[2].status_count
-                // const rentbadge = document.getElementById('rent-badge')
-                // rentbadge.innerHTML = data.result[0].status_count
-                // const salebadge = document.getElementById('sale-badge')
-                // salebadge.innerHTML = data.result[1].status_count
-                // const badgeforapprove = document.getElementById('badge-approval')
-                // badgeforapprove.innerHTML = parseInt(data.result[1].status_count) + parseInt(data.result[0].status_count)
-                // //earnings
-                const earningsdiv = document.getElementById('earnings')
-                    earningsdiv.innerHTML = "<span class='peso'>&#8369;</span>"+ util.addCommas(data.result[0].profit.toFixed(2) )
+              
+                // const earningsdiv = document.getElementById('earnings')
+                // earningsdiv.innerHTML = "<span class='peso'>&#8369;</span>"+ util.addCommas(data.result[0].profit.toFixed(2) )
                 //opex
-                const opex = document.getElementById('opex')
-                opex.innerHTML = `<span class='peso'>&#8369;</span>${util.addCommas(data.result[0].opex.toFixed(2)) }`
+                // const opex = document.getElementById('opex')
+                // opex.innerHTML = `<span class='peso'>&#8369;</span>${util.addCommas(data.result[0].opex.toFixed(2)) }`
+                            
                 resolve(true)
-                //tanggal muna rent rent overdue
-                // if(data.result[0].overdue!=="0" ||
-                //     isNaN(data.result[0].overdue)){
-                // }else{
-                //     const rentdue = document.getElementById('rent-overdue')
-                //     rentdue.innerHTML = `${ data.result[0].status_count / data.result[0].overdue } %`
-                //     const rentduediv = document.getElementById('rentduediv')
-                //     rentduediv.setAttribute("style",`width:${(data.result[0].status_count / data.result[0].overdue )}%`)
-                //     //rentduediv.aria-valuenow = `${ (data.result[0].status_count / data.result[0].overdue )}`
-                // }
+              
             })
             .catch((error) => {
                 //util.Toast(`Error:, ${error}`,1000)
@@ -374,6 +276,7 @@ let dash = {
             })    
         })
     },
+
     barChart: async ()=>{
         await fetch(`https://vantaztic-api-onrender.onrender.com/booga`,{
             cache: 'reload'
@@ -506,6 +409,7 @@ let dash = {
             console.error('Error:', error)
         })    
     }, //===end method barchart
+    
     pieChart: async ()=>{
         const pieLabels =['Sales','Rent']
         const piedata = {
@@ -540,17 +444,272 @@ let dash = {
         }
         new Chart("chart2",pieConfig)
     },
-	//==,= main run
-	init : async () => {
-        console.log('dash.init() .....')
+
+    //===========GETMENU==========
+    getmenu: async(grp_id) =>{
+        console.log('=====FIRING ggetmenu()==========')
         
+        await fetch(`${dash.myIp}/xmenu/${util.getCookie('grp_id')}`,{
+            cache:'reload'
+        })
+        .then( (res)  => res.json() )
+        .then( (data) => {	
+            //console.log('menu',data)
+
+            var xdata = []
+            
+            xdata.push(data)
+            //console.log(xdata)
+            
+            const ul = document.getElementById('sidebarnav'); // Get the <ul> or <ol>
+
+            //remove all elements of UL
+            while (ul.firstChild) {
+            ul.removeChild(ul.firstChild);
+            }
+            
+            xdata[0].forEach(info => {  
+            
+                const li = document.createElement('li'); // Create a new <li>
+                li.classList.add("nav-small-cap")
+
+                const ii =  document.createElement('i')
+                ii.classList.add("fs-10")
+                
+                li.appendChild( ii )
+
+                const span =  document.createElement('span')
+                span.textContent = info.menu
+                span.classList.add('hide-menu')  
+                //span.appendChild(ii)
+                
+                li.appendChild(span)
+
+                ul.appendChild(li); // Append the <li> to the list
+            
+                //var subdata = JSON.parse(info.list)
+                //console.log( info )
+                var aList = []
+                // //loop submenu
+                aList.push( info.list )
+                //console.log( "yo", info.list )
+                    
+                aList[0].forEach(xmenu => {  
+                    // //=================== submenu
+                    const li2 = document.createElement('li'); // Create a new <li>
+                    li2.classList.add("sidebar-item")
+                    
+                    const span1 =  document.createElement('span')
+                    const i2 =  document.createElement('i')
+                    i2.classList.add("ti",`${xmenu.icon}`)
+                    span1.appendChild(i2)
+
+                    const span2 =  document.createElement('span')
+                    span2.classList.add('hide-menu')  
+                    span2.textContent = `${xmenu.sub}`
+
+                    const aa = document.createElement('a'); // Create a new <li>
+                    aa.classList.add("sidebar-link")
+
+                    aa.appendChild(  span1 )
+                    aa.appendChild(  span2 )
+
+                    aa.href = xmenu.href
+                    
+                    li2.appendChild(aa)
+                    
+                    ul.appendChild(li2); // Append the <li> to the list                    
+            
+                })//===end subdata
+
+            })//end foreach
+
+            return true;
+            
+        })	
+        .catch((error) => {
+            //util.Toast(`Error:, ${error}`,1000)
+            console.error('Error:', error)
+        })    
+    },
+    //==========END  GETMENU
+
+    //======== LOAD EXTJS
+    loadbarChart: async()=>{
+        console.log('loading... loadbarchart()')
+
+        await fetch(`${dash.myIp}/bardata`,{
+            cache: 'reload'
+        })
+        .then((res) => {  //promise... then 
+            return res.json();
+        })
+        .then((xdata) => {
+
+            //console.log('merege',xdata.xdata)
+
+            const mergedData = dash.mergeFinalData(xdata.xdata);
+            console.log('my merge data ', mergedData);
+
+            var options = {
+                series: mergedData,
+                chart: {
+                type: 'bar',
+                height: 350
+              },
+              plotOptions: {
+                bar: {
+                  horizontal: false,
+                  columnWidth: '55%',
+                  borderRadius: 5,
+                  borderRadiusApplication: 'end'
+                },
+              },
+              dataLabels: {
+                enabled: false
+              },
+              stroke: {
+                show: true,
+                width: 2,
+                colors: ['transparent']
+              },
+              xaxis: {
+                categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+              },
+              yaxis: {
+                title: {
+                  text: 'Qty.'
+                }
+              },
+              fill: {
+                opacity: 1
+              },
+              tooltip: {
+                y: {
+                  formatter: function (val) {
+                    return  val + " (Qty)"
+                  }
+                }
+              }
+            };
+      
+              var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
+              chart.render();
+        
+        })
+        .catch((error) => {
+            console.error('Error:', error)
+        })
+
+
+        
+    },
+    
+    mergeFinalData:(arr)=>{
+        const data = arr ; 
+
+        // Define your periods (or generate from data)
+        const periods = ['2025-01', '2025-02', '2025-03', '2025-04', '2025-05'];
+        
+        // Step 1: Collect all unique transaction types
+        const typesSet = new Set();
+        data.forEach(item => {
+          typesSet.add(item.transaction.toUpperCase()); // or as-is if case matches
+        });
+        const types = Array.from(typesSet);
+        
+        // Step 2: Initialize result map with empty data arrays
+        const resultMap = {};
+        types.forEach(type => {
+          resultMap[type] = { name: type, data: Array(periods.length).fill(0) };
+        });
+        
+        // Step 3: Populate data
+        data.forEach(item => {
+          const transType = item.transaction.toUpperCase(); // standardize case if needed
+          const period = item["substring(b.date_created,1,7)"]; // your period string
+          const qty = parseInt(item["sum(a.qty)"]);
+        
+          const index = periods.indexOf(period);
+          if (index !== -1 && resultMap[transType]) {
+            resultMap[transType].data[index] = qty;
+          }
+        });
+        
+        // Step 4: Convert object to array format
+        const finalArray = Object.values(resultMap);
+        
+        return finalArray
+        
+    },
+
+    //useful for joining qty into 1
+    mergeData:(arr)=> {
+        const resultMap = {};
+      
+        arr.forEach(item => {
+          const key = item.transaction;
+          if (!resultMap[key]) {
+            resultMap[key] = {
+              transaction: key,
+              qty: 0,
+              price: 0,
+              sale_price: 0,
+              total: 0,
+              dates: []
+            };
+          }
+      
+          // parseFloat after removing commas, then sum
+          resultMap[key].qty += parseInt(item["sum(a.qty)"]);
+          resultMap[key].price += parseFloat(item["format(sum(a.price),2)"].replace(/,/g, ""));
+          resultMap[key].sale_price += parseFloat(item["format(sum(a.sale_price),2)"].replace(/,/g, ""));
+          resultMap[key].total += parseFloat(item["format(sum(a.total),2)"].replace(/,/g, ""));
+      
+          // Collect periods
+          resultMap[key].dates.push(item["substring(b.date_created,1,7)"]);
+        });
+      
+        // Convert map to array
+        const mergedArray = Object.values(resultMap).map(item => ({
+          transaction: item.transaction,
+          total_qty: item.qty,
+          total_price: item.price.toFixed(2),
+          total_sale_price: item.sale_price.toFixed(2),
+          total_amount: item.total.toFixed(2),
+          periods: [...new Set(item.dates)].join(', ')
+        }));
+      
+        return mergedArray;
+    },
+
+    testing:()=>{
+        const data = [{"transaction":"PURCHASE","sum(a.qty)":"29","format(sum(a.price),2)":"1,659,000.01","format(sum(a.sale_price),2)":"2,741,872.00","format(sum(a.total),2)":"5,326,624.00","substring(b.date_created,1,7)":"2025-01"},{"transaction":"PURCHASE","sum(a.qty)":"18","format(sum(a.price),2)":"2,520,000.00","format(sum(a.sale_price),2)":"5,503,110.00","format(sum(a.total),2)":"6,546,510.00","substring(b.date_created,1,7)":"2025-02"},{"transaction":"PURCHASE","sum(a.qty)":"20","format(sum(a.price),2)":"2,356,000.00","format(sum(a.sale_price),2)":"840,386,530.00","format(sum(a.total),2)":"2,518,049,350.00","substring(b.date_created,1,7)":"2025-03"},{"transaction":"PURCHASE","sum(a.qty)":"25","format(sum(a.price),2)":"5,306,000.00","format(sum(a.sale_price),2)":"426,857,996.30","format(sum(a.total),2)":"847,460,001.30","substring(b.date_created,1,7)":"2025-04"},{"transaction":"PURCHASE","sum(a.qty)":"16","format(sum(a.price),2)":"650,000.00","format(sum(a.sale_price),2)":"1,836,305.14","format(sum(a.total),2)":"9,501,520.37","substring(b.date_created,1,7)":"2025-05"},{"transaction":"RENT","sum(a.qty)":"1","format(sum(a.price),2)":"0.01","format(sum(a.sale_price),2)":"163,000.00","format(sum(a.total),2)":"163,000.00","substring(b.date_created,1,7)":"2025-01"},{"transaction":"RENT","sum(a.qty)":"4","format(sum(a.price),2)":"0.04","format(sum(a.sale_price),2)":"74,220.00","format(sum(a.total),2)":"74,220.00","substring(b.date_created,1,7)":"2025-02"},{"transaction":"RENT","sum(a.qty)":"4","format(sum(a.price),2)":"0.04","format(sum(a.sale_price),2)":"1,481,396.00","format(sum(a.total),2)":"1,481,396.00","substring(b.date_created,1,7)":"2025-03"},{"transaction":"RENT","sum(a.qty)":"3","format(sum(a.price),2)":"0.02","format(sum(a.sale_price),2)":"276,000.00","format(sum(a.total),2)":"477,000.00","substring(b.date_created,1,7)":"2025-04"},{"transaction":"RENT","sum(a.qty)":"6","format(sum(a.price),2)":"0.04","format(sum(a.sale_price),2)":"467,033.30","format(sum(a.total),2)":"889,099.90","substring(b.date_created,1,7)":"2025-05"},{"transaction":"TERMS","sum(a.qty)":"3","format(sum(a.price),2)":"413,000.02","format(sum(a.sale_price),2)":"399,200.00","format(sum(a.total),2)":"399,200.00","substring(b.date_created,1,7)":"2025-02"}]
+  
+        const mergedData = dash.mergeData(data);
+        console.log(mergedData);
+        
+    },
+
+	//==,= main run
+	init : () => {
+
+        console.log('dash.init() .....')
+
+        //Sdash.testing()
+
+        dash.getmenu() //get menu
+        //dash.loadExt() //load extjs
+
         util.speak( util.getCookie('the_voice'))
         
         let authz = []
         authz.push(util.getCookie('grp_id' ))
         authz.push(util.getCookie('fname'))
+
         //==HANDSHAKE FIRST WITH SOCKET.IO
         const userName = { token : authz[1] , mode: 1}//full name token
+        
         dash.socket = io.connect("https://vantaztic-api-onrender.onrender.com", {
             //withCredentials: true,
             query:`userName=${JSON.stringify(userName)}`
@@ -558,32 +717,60 @@ let dash = {
             //   "osndp-header": "osndp"
             // }
         });//========================initiate socket handshake ================
+        
         //write name
-        const xname = document.getElementById('xname')
-        const xpic = document.getElementById('xpic')
+        //const xname = document.getElementById('xname')
+        const xpic = document.getElementById('img-profile')
+
+        console.log(  util.getCookie('pic') )
+
         dash.approver_type = util.getCookie('approver_type')
+        
         //get name of logged user
-        xname.innerHTML = util.getCookie('fname')
+        //xname.innerHTML = util.getCookie('fname')
+        
         xpic.src = util.getCookie('pic')
+        
         //get ip address
-        const ipaddy = document.getElementById('ip')
-        ipaddy.innerHTML = util.getCookie('ip_addy')
-        
-        
-        util.Toast('System Ready', 2000)
+        //const ipaddy = document.getElementById('ip')
+        //ipaddy.innerHTML = util.getCookie('ip_addy')
+                
+        //util.Toast('System Ready', 2000)
         //// balik na
-        dash.fetchBadgeData() // update badges
-        .then( x=>{
-            if(x){
-                dash.getMsg()
-                dash.getPO() //get pending for approval
-            }
-        })	
+
+        dash.getMsg()
+       
+        
+        ////// balik mo ang dash.getPO, this gets  the for approval's
+        // dash.fetchBadgeData() // update badges
+        // .then( x=>{
+        //     console.log('badgedata', x)
+
+        //     if(x){
+        //         dash.getMsg()
+        //         dash.getPO() //get pending for approval
+        //     }
+        // })
+
         //TAKE OUT MUNA
         // dash.pieChart()
         // dash.barChart()
 	}//END MAIN
 } //======================= end ajax obj==========//
 //ajax.Bubbl
+Ext.onReady(function(){
+    console.log('ext on ready....')
+    Ext.tip.QuickTipManager.init();
+
+    dash.appExt = MyApp.app ; //get instance of Ext.application MyApp.app
+
+    // Get the controller
+    dash.ctrlExt = dash.appExt.getController('myController');
+
+    dash.getPO()
+
+})
+
 window.scrollTo(0,0);
 dash.init()
+

@@ -9,7 +9,6 @@ assets/resized/*
 assets/obfucate/*
 assets/img/*
 assets/fonts/*
-assets/css/*
 .htaccess.txt
 assets/js/.htaccess
 assets/js/admin_bak04062k24.js
@@ -30,4 +29,14 @@ assets/obsfucate/dashboard.js
 assets/obsfucate/login.js
 assets/obsfucate/theme.js
 assets/obsfucate/util.js
-index.html
+
+assets/js/SQL SNIPPETS.sql
+ORIG_FILES_BAK_MAY_14_2K25/admin.html
+ORIG_FILES_BAK_MAY_14_2K25/admin.js
+ORIG_FILES_BAK_MAY_14_2K25/dashboard.html
+ORIG_FILES_BAK_MAY_14_2K25/dashboard.js
+ORIG_FILES_BAK_MAY_14_2K25/index.html
+ORIG_FILES_BAK_MAY_14_2K25/index2.html
+ORIG_FILES_BAK_MAY_14_2K25/login.js
+ORIG_FILES_BAK_MAY_14_2K25/util.js
+assets/js/dashboard_bak_05132025.js
