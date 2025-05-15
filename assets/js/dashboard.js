@@ -563,7 +563,7 @@ let dash = {
               plotOptions: {
                 bar: {
                   horizontal: false,
-                  columnWidth: '65%',
+                  columnWidth: '75%',
                   borderRadius: 5,
                   borderRadiusApplication: 'end'
                 },
@@ -596,8 +596,8 @@ let dash = {
               }
             };
       
-              var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
-              chart.render();
+            var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
+            chart.render();
         
         })
         .catch((error) => {
