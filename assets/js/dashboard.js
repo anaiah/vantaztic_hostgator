@@ -563,7 +563,7 @@ let dash = {
               plotOptions: {
                 bar: {
                   horizontal: false,
-                  columnWidth: '55%',
+                  columnWidth: '65%',
                   borderRadius: 5,
                   borderRadiusApplication: 'end'
                 },
