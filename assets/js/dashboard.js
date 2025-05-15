@@ -556,7 +556,7 @@ let dash = {
                 chart: {
                     redrawOnParentResize: false,
                     redrawOnWindowResize: false,
-                    width: 600,
+                    width: 400,
                     height: 350,
                     type: 'bar'
               },
