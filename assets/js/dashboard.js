@@ -3,8 +3,8 @@ author : Carlo O. Dominguez
 */
 let dash = {
 	socket:null,
-    myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
-    //myIp: `https://vantaztic-api-onrender.onrender.com`,
+    //myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
+    myIp: `https://vantaztic-api-onrender.onrender.com`,
     
     approver_type:null,
     resolver:async (xmsg,xtype) => {
