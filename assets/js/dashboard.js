@@ -555,6 +555,7 @@ let dash = {
                 series: mergedData,
                 chart: {
                 type: 'bar',
+                width:500,
                 height: 350
               },
               plotOptions: {
