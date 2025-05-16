@@ -159,7 +159,8 @@ let dash = {
                 }//========================== end for loop====================im
                 // if want to chck data -> use console.log(ydata)
                 console.log(ydata)
-                                
+
+                //===load via extjs controllerfload
                 dash.ctrlExt.loadPo(ydata)
                
                 obj={}

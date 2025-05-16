@@ -3,6 +3,11 @@ Ext.define('MyApp.controller.myController', {
 
     init: function() {
         // initialization code
+        //this.loadChartData()
+
+    },
+
+    loadChartData:()=>{
 
     },
 
