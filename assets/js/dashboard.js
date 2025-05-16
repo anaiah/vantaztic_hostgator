@@ -3,8 +3,8 @@ author : Carlo O. Dominguez
 */
 let dash = {
 	socket:null,
-    myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
-    //myIp: `https://vantaztic-api-onrender.onrender.com`,
+   // myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
+    myIp: `https://vantaztic-api-onrender.onrender.com`,
     
     approver_type:null,
     resolver:async (xmsg,xtype) => {
@@ -550,14 +550,25 @@ let dash = {
         })
         .then((xdata) => {
 
-        console.log('merege',cTrans)
+            console.log('merege',cTrans)
 
             const mergedData = dash.mergeFinalData(xdata.xdata, cTrans );
 
             console.log('my merge data ', mergedData);
 
+            let colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'];
+
+            // Fisher-Yates shuffle
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [colors[i], colors[j]] = [colors[j], colors[i]]; // swap elements
+            }//endfor   
+
             var options = {
                 series: mergedData,
+                
+                colors: colors,
+
                 chart: {
                     redrawOnParentResize: false,
                     redrawOnWindowResize: false,
