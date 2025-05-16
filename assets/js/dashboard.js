@@ -3,8 +3,8 @@ author : Carlo O. Dominguez
 */
 let dash = {
 	socket:null,
-    //myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
-    myIp: `https://vantaztic-api-onrender.onrender.com`,
+    myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
+    //myIp: `https://vantaztic-api-onrender.onrender.com`,
     
     approver_type:null,
     resolver:async (xmsg,xtype) => {
@@ -158,7 +158,11 @@ let dash = {
                
                 obj={}
 
-                dash.loadbarChart()
+                dash.loadbarChart('transaction')
+                
+                setTimeout(() => {
+                    dash.loadbarChart('type');
+                }, 1000)
 
                 //////// BALIK NATENN PAG DI UBRA, how to call method in Myapp.Application  window.myapp.test(ydata[0]);
                 
@@ -535,10 +539,10 @@ let dash = {
     //==========END  GETMENU
 
     //======== LOAD EXTJS
-    loadbarChart: async()=>{
+    loadbarChart: async( cTrans )=>{
         console.log('loading... loadbarchart()')
 
-        await fetch(`${dash.myIp}/bardata`,{
+        await fetch(`${dash.myIp}/bardata/${cTrans}`,{
             cache: 'reload'
         })
         .then((res) => {  //promise... then 
@@ -546,9 +550,10 @@ let dash = {
         })
         .then((xdata) => {
 
-            //console.log('merege',xdata.xdata)
+        console.log('merege',cTrans)
 
-            const mergedData = dash.mergeFinalData(xdata.xdata);
+            const mergedData = dash.mergeFinalData(xdata.xdata, cTrans );
+
             console.log('my merge data ', mergedData);
 
             var options = {
@@ -559,44 +564,44 @@ let dash = {
                     width: 400,
                     height: 350,
                     type: 'bar'
-              },
-              plotOptions: {
-                bar: {
-                  horizontal: false,
-                  columnWidth: '75%',
-                  borderRadius: 5,
-                  borderRadiusApplication: 'end'
                 },
-              },
-              dataLabels: {
-                enabled: false
-              },
-              stroke: {
-                show: true,
-                width: 2,
-                colors: ['transparent']
-              },
-              xaxis: {
-                categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
-              },
-              yaxis: {
-                title: {
-                  text: 'Qty.'
+                plotOptions: {
+                    bar: {
+                    horizontal: false,
+                    columnWidth: '75%',
+                    borderRadius: 5,
+                    borderRadiusApplication: 'end'
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    show: true,
+                    width: 2,
+                    colors: ['transparent']
+                },
+                xaxis: {
+                    categories: ['Jan','Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct'],
+                },
+                yaxis: {
+                    title: {
+                    text: 'Qty.'
+                    }
+                },
+                fill: {
+                    opacity: 1
+                },
+                tooltip: {
+                    y: {
+                    formatter: function (val) {
+                        return  val + " (Qty)"
+                    }
+                    }
                 }
-              },
-              fill: {
-                opacity: 1
-              },
-              tooltip: {
-                y: {
-                  formatter: function (val) {
-                    return  val + " (Qty)"
-                  }
-                }
-              }
-            };
+            };//==end options
       
-            var chart = new ApexCharts(document.querySelector("#pie-chart"), options);
+            var chart = new ApexCharts(document.querySelector((cTrans=="transaction"?"#pie-chart":"#prod-chart")), options);
             chart.render();
         
         })
@@ -608,16 +613,33 @@ let dash = {
         
     },
     
-    mergeFinalData:(arr)=>{
-        const data = arr ; 
+    //this is used for having multiple quantities
+    mergeFinalData:(arr, ctype )=>{
+        const data = arr ; //load data array
 
-        // Define your periods (or generate from data)
-        const periods = ['2025-01', '2025-02', '2025-03', '2025-04', '2025-05'];
+        let periods = [];
+        const today = new Date();
+        const currentYear = today.getFullYear();
+        const currentMonth = today.getMonth() + 1; // getMonth() returns 0-11
         
+        for (let month = 1; month <= currentMonth; month++) {
+          // Pad the month with a leading zero if needed
+          const monthString = month.toString().padStart(2, '0');
+          periods.push(`${currentYear}-${monthString}`);
+        }
+
+        //=== end inclusion current month===
+
+
         // Step 1: Collect all unique transaction types
         const typesSet = new Set();
         data.forEach(item => {
-          typesSet.add(item.transaction.toUpperCase()); // or as-is if case matches
+            if(ctype=="transaction"){
+                typesSet.add(item.transaction.toUpperCase()); // or as-is if case matches
+            }else{
+                typesSet.add(item.type.toUpperCase()); // or as-is if case matches
+            }
+          
         });
         const types = Array.from(typesSet);
         
@@ -627,16 +649,24 @@ let dash = {
           resultMap[type] = { name: type, data: Array(periods.length).fill(0) };
         });
         
+        let transType
+
         // Step 3: Populate data
         data.forEach(item => {
-          const transType = item.transaction.toUpperCase(); // standardize case if needed
-          const period = item["substring(b.date_created,1,7)"]; // your period string
-          const qty = parseInt(item["sum(a.qty)"]);
-        
-          const index = periods.indexOf(period);
-          if (index !== -1 && resultMap[transType]) {
-            resultMap[transType].data[index] = qty;
-          }
+            if(ctype=="transaction"){
+                 transType = item.transaction.toUpperCase(); // standardize case if needed
+            }else{
+                 transType = item.type.toUpperCase(); // for products
+            }//eif
+
+            const period = item["substring(b.date_created,1,7)"]; // your period string
+            const qty = parseInt(item["sum(a.qty)"]);
+            
+            const index = periods.indexOf(period);
+
+            if (index !== -1 && resultMap[transType]) {
+                resultMap[transType].data[index] = qty;
+            }
         });
         
         // Step 4: Convert object to array format
