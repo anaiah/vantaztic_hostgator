@@ -108,6 +108,12 @@ let dash = {
     // ==== retrieve PO for approval ==//
     getPO:  () => {
         
+
+        //remove first htmls for ext and chart
+        document.getElementById('prod-chart').innerHTML=''
+        document.getElementById('pie-chart').innerHTML=''
+        //document.getElementById('grid_month').innerHTML=''
+        
         fetch(`${dash.myIp}/getpo/${util.getCookie('approver_type')}`,{
             cache:'reload'
         })
@@ -555,11 +561,12 @@ let dash = {
             const mergedData = dash.mergeFinalData(xdata.xdata, cTrans );
 
             console.log('my merge data ', mergedData);
-
-            let colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'];
+            
+            //let colors = ['#FF5733', '#33FF57', '#3357FF', '#F333FF', '#33FFF5'];
+            let colors = ['#FF0000', '#FFFF00', '#0000FF', '#00FFFF'];
 
             // Fisher-Yates shuffle
-            for (let i = array.length - 1; i > 0; i--) {
+            for (let i = colors.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
                 [colors[i], colors[j]] = [colors[j], colors[i]]; // swap elements
             }//endfor   
