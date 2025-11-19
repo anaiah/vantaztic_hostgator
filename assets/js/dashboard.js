@@ -9,14 +9,17 @@ let dash = {
     approver_type:null,
     resolver:async (xmsg,xtype) => {
         console.log('RESOLVER()')
+        
+        console.log('SPEAK NOW',xmsg)
+                util.speak(xmsg )
+                //util.Toast(xmsg, 3000)
+                dash.getPO()
+
         //balik na 
         dash.fetchBadgeData() // update badges
         .then( x=>{
             if(x){
-                console.log('SPEAK NOW',xmsg)
-                util.speak(xmsg )
-                util.Toast(xmsg, 3000)
-                dash.getPO()
+                
             }
         })    
         //remove muna
@@ -52,7 +55,13 @@ let dash = {
                 //then speak 
                 const xmsg  = JSON.parse(msg)
                 console.log('may message po')
-                dash.resolver(xmsg.msg, xmsg.type)
+
+                console.log('SPEAK NOW',xmsg)
+                util.speak(xmsg )
+                //util.Toast(xmsg, 3000)
+                dash.getPO()
+
+                //dash.resolver(xmsg.msg, xmsg.type)
             }
         })
         dash.socket.on('logged', (msg) => {
@@ -108,6 +117,8 @@ let dash = {
     // ==== retrieve PO for approval ==//
     getPO:  () => {
         
+        let data=[], ydata = [], obj
+                
 
         //remove first htmls for ext and chart
         document.getElementById('prod-chart').innerHTML=''
@@ -118,16 +129,19 @@ let dash = {
             cache:'reload'
         })
         .then((response) => {  //promise... then 
-            return response.json();
+            return response.text();
         })
-        .then( (data) => {
-           
+        .then( (raw) => {
+            console.log('Raw response:', raw);
+            const clean = raw.trim();
+            data = JSON.parse(clean);
+
             if( data.found ){
 
-                //console.log('rec', data.result[0])
+                  
+                  console.log( 'new',data)
                
-                let ydata = [], obj
-                
+                //for (let key in data.result) {
                 for (let key in data.result) {
 
                     xdetails = JSON.parse(data.result[key].details)
@@ -158,7 +172,7 @@ let dash = {
                     
                 }//========================== end for loop====================im
                 // if want to chck data -> use console.log(ydata)
-                console.log(ydata)
+                console.log( 'latest  arr',ydata)
 
                 //===load via extjs controllerfload
                 dash.ctrlExt.loadPo(ydata)
@@ -177,8 +191,12 @@ let dash = {
 
             }else{
                 util.speak('No Purchase Order for approval!')
+            
+                
+                dash.ctrlExt.loadPo(ydata)
+
                 //dash.updateBadge(azero) //===update badge
-            }//eif
+             }//eif
         })
         .catch((error) => {
             //util.Toast(`Error:, ${error}`,1000)
@@ -762,48 +780,36 @@ let dash = {
         //==HANDSHAKE FIRST WITH SOCKET.IO
         const userName = { token : authz[1] , mode: 1}//full name token
         
-        dash.socket = io.connect("https://vantaztic-api-onrender.onrender.com", {
+
+        dash.socket = io.connect(`${dash.myIp}`, {
             //withCredentials: true,
+            transports: ['websocket', 'polling'], // Same as server
+            upgrade: true, // Ensure WebSocket upgrade is attempted
+            rememberTransport: false, //Don't keep transport after refresh
             query:`userName=${JSON.stringify(userName)}`
             // extraHeaders: {
             //   "osndp-header": "osndp"
             // }
         });//========================initiate socket handshake ================
-        
-        //write name
-        //const xname = document.getElementById('xname')
+
+        dash.socket.on('connect', () => {
+            console.log('Connected to Socket.IO server using:', dash.socket.io.engine.transport.name); // Check the transport
+        });
+
+        dash.socket.on('disconnect', () => {
+            console.log('Disconnected from Socket.IO server');
+        });
+
         const xpic = document.getElementById('img-profile')
 
         console.log(  util.getCookie('pic') )
 
         dash.approver_type = util.getCookie('approver_type')
         
-        //get name of logged user
-        //xname.innerHTML = util.getCookie('fname')
-        
         xpic.src = util.getCookie('pic')
         
-        //get ip address
-        //const ipaddy = document.getElementById('ip')
-        //ipaddy.innerHTML = util.getCookie('ip_addy')
-                
-        //util.Toast('System Ready', 2000)
-        //// balik na
-
         dash.getMsg()
        
-        
-        ////// balik mo ang dash.getPO, this gets  the for approval's
-        // dash.fetchBadgeData() // update badges
-        // .then( x=>{
-        //     console.log('badgedata', x)
-
-        //     if(x){
-        //         dash.getMsg()
-        //         dash.getPO() //get pending for approval
-        //     }
-        // })
-
         //TAKE OUT MUNA
         // dash.pieChart()
         // dash.barChart()

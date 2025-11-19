@@ -6,7 +6,7 @@ modals,forms,utilities
 */
 
 const myIp = `https://vantaztic-api-onrender.onrender.com`
-//const myIp = "https://192.168.214.221:10000"
+//const myIp = "http://192.168.62.221:10000"
 
 
 const requirements = document.querySelectorAll(".requirements")
@@ -336,11 +336,23 @@ let util ={
                 admin.socket.emit('admin', JSON.stringify(sendmsg))
             }else{
                 util.speak(data.voice)
-                
-                admin.shopCart.length = 0//reset shopcart
 
-                util.hideModal('equipmentTagModal',2000)//then close form    
-                admin.filterBy()
+                const itagsave = document.getElementById('i-tag-save')
+                const btntagsave = document.getElementById('tag-save-btn')
+                itagsave.classList.add('fa-floppy-o')
+                itagsave.classList.remove('fa-refresh')
+                itagsave.classList.remove('fa-spin')
+                btntagsave.disabled = false
+                
+                alert(data.message)
+                
+                  
+                
+                //====temporary lang to carlo ha coz of uniquue PO dont close the modal if error so they  can  change
+                // admin.shopCart.length = 0//reset shopcart
+
+                // util.hideModal('equipmentTagModal',2000)//then close form    
+                // admin.filterBy()
                 return false
             }
             //admin.filterBy() //reload admin.getall()
@@ -439,6 +451,7 @@ let util ={
                 ////util.alertMsg(data.message,'success','equipmentPlaceHolder')
                 //hide modalbox
                 util.hideModal('equipmentModal',2000)    
+
                 admin.filterBy() ///getAll() // update tables and speak
                 //util.Toast(data.message,2000)
             }else{

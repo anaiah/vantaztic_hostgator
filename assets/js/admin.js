@@ -5,7 +5,7 @@ util.speak()
 */
 let admin = {
 	socket: null,
-	//myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
+	//myIp: "http://192.168.62.221:10000", //https://vantaztic-api-onrender.onrender.com}
     myIp: `https://vantaztic-api-onrender.onrender.com`,
     offset: 0,
     shopCart: [],
@@ -275,7 +275,7 @@ let admin = {
             }//========================== end for loop====================
         })
         .catch((error) => {
-            util.Toast(`Error:, ${error}`,1000)
+            //util.speak(`Error:, ${error}`,1000)
             console.error('Error:', error)
         })    
         return true
@@ -298,10 +298,10 @@ let admin = {
                     total: qtys.value * admin.dataforTag[nKey].sale_price
                 })
                 badge.innerHTML = admin.shopCart.length
-                util.Toast("Item Successfully Added!",2000)
+                util.speak("Item Successfully Added!",2000)
             }else{
                 console.log('present!,...ignore')
-                util.Toast('THIS ITEM IS ALREADY IN CART!',2000)
+                util.speak('THIS ITEM IS ALREADY IN CART!')
                 return true;  
             }
         }else{
@@ -314,7 +314,7 @@ let admin = {
                 total: qtys.value * admin.dataforTag[nKey].sale_price
             })
             badge.innerHTML = admin.shopCart.length
-            util.Toast("Item Successfully Added!",2000)
+            util.speak("Item Successfully Added!")
         }
         console.log( '====TOTAL SHOPCART===',admin.shopCart) 
     },
@@ -323,7 +323,7 @@ let admin = {
         let pocartmodal =  new bootstrap.Modal(document.getElementById('pocartModal'),configObj);
         let pocartModalEl = document.getElementById('pocartModal')
         if(admin.shopCart.length == 0){
-            util.Toast('SHOPPING CART EMPTY!',2000)
+            util.speak('SHOPPING CART EMPTY!')
             e.preventDefault()
             e.stopPropagation()
             return false
@@ -516,7 +516,7 @@ let admin = {
             salebadge.innerHTML = data.result[1].status_count
         })
         .catch((error) => {
-            util.Toast(`Error:,dito nga ${error}`,1000)
+            util.speak(`Error:,dito nga ${error}`)
             console.error('Error:', error)
         })  
         return true
@@ -744,7 +744,7 @@ let admin = {
             cSelect.focus()
         })
         .catch((error) => {
-            util.Toast(`Error:, ${error}`,1000)
+            util.speak(`Error:, ${error}`)
             console.error('Error:', error)
         })
         return true
@@ -759,8 +759,11 @@ let admin = {
     filterBy:()=>{
         //==========Filter By====
         console.log('==filterBy()===')
+        
         let xtype = document.getElementById("filter_type")
         let xstatus = document.getElementById("filter_status")
+
+        console.log( xtype.value, xstatus.value )
         admin.getAll(xtype.value,xstatus.value )
         ///// temporarily out admin.fetchBadgeData()
     },
@@ -780,7 +783,7 @@ let admin = {
             ///// temporarily out   admin.fetchBadgeData()// update badges
         })
         admin.socket.on('logged', (msg) => {
-            util.Toast(msg,3000)
+            util.speak(msg,3000)
             util.clearBox()
             /*
             var item = document.getElementById("xmsg")
@@ -806,7 +809,7 @@ let admin = {
             }
         })
         .catch((error) => {
-            //util.Toast(`Error:, ${error}`,1000)
+            //util.speak(`Error:, ${error}`,1000)
             console.error('Error:', error)
         })
         console.log('==deletePost()')
@@ -823,16 +826,30 @@ let admin = {
         authz.push(util.getCookie('fname'))
         //==HANDSHAKE FIRST WITH SOCKET.IO
         const userName = { token : authz[1] , mode: 1}//full name token
+
         admin.socket = io.connect(`${admin.myIp}`, {
             //withCredentials: true,
+            transports: ['websocket', 'polling'], // Same as server
+            upgrade: true, // Ensure WebSocket upgrade is attempted
+            rememberTransport: false, //Don't keep transport after refresh
             query:`userName=${JSON.stringify(userName)}`
             // extraHeaders: {
             //   "osndp-header": "osndp"
             // }
         });//========================initiate socket handshake ================
+
         // admin.socket.on('logged', (msg) => {
         //     console.log('socket.io()',msg)
         //  })
+
+        admin.socket.on('connect', () => {
+            console.log('Connected to Socket.IO server using:', admin.socket.io.engine.transport.name); // Check the transport
+        });
+
+        admin.socket.on('disconnect', () => {
+            console.log('Disconnected from Socket.IO server');
+        });
+
         //write name
         const xname = document.getElementById('xname')
         const xpic = document.getElementById('xpic')
@@ -844,7 +861,7 @@ let admin = {
         
         
         util.loadModals('equipmentModal','equipmentForm','#equipmentForm','equipmentPlaceHolder') //PRE-LOAD MODALS
-        util.Toast('System Ready', 2000)
+        ////util.speak('System Ready', 2000)
         //// temporarily out    admin.fetchBadgeData()
         console.log('First getMsg()')
         admin.getMsg()
