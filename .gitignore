@@ -1,7 +1,7 @@
 *.code-workspace
 .vscode/settings.json
 node_modules/*
-*.config
+*.config    
 assets/upload/*
 assets/resized/*
 assets/obfucate/*
