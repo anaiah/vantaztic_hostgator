@@ -7,7 +7,9 @@ modals,forms,utilities
 
 const myIp = `https://vantaztic-api-onrender.onrender.com`
 const xIp = `https://anaiah.github.io/vantaztic_hostgator`
-//const myIp = "http://192.168.62.221:10000"
+
+// const myIp = "http://192.168.1.7:10000"
+// const xIp = `http://localhost:4003`
 
 
 const requirements = document.querySelectorAll(".requirements")
@@ -406,7 +408,7 @@ let util ={
                         util.otpemail = data.email
                         util.sendotp(${admin.myIp}/sendotp/${data.email}/${data.fname}`)
                        */
-                        window.location.replace( `${xIp}/dashboard` )
+                        window.location.replace( `${xIp}/main` )
                         ///window.location.replace( `/main` )
 
                         //location.href = 'https://vantaztic.com/app/dashboard.html'

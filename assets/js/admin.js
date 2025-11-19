@@ -6,7 +6,8 @@ util.speak()
 let admin = {
 	socket: null,
 	//myIp: "http://192.168.62.221:10000", //https://vantaztic-api-onrender.onrender.com}
-    myIp: `https://vantaztic-api-onrender.onrender.com`,
+    //myIp: `https://vantaztic-api-onrender.onrender.com`,
+    myIp: myIp,
     offset: 0,
     shopCart: [],
     dataforTag:null,
@@ -152,7 +153,10 @@ let admin = {
                     case "2":
                     case "3":
                         console.log( 'case=1:2:3 getAll()',data.result[key])
-                        ximage = `assets/resized/${data.result[key].po_number}.jpg`
+                        
+                        ///orig take down nov. 19, 2025 ximage = `assets/resized/${data.result[key].po_number}.jpg`
+                        ximage = `https://coral-oyster-704291.hostingersite.com/dr/${data.result[key].po_number}.jpg`
+
                         let xdet = JSON.parse(JSON.stringify(data.result[key].details))
                         for(let xx in xdet ){//=================next FOR NEXT
                             let xdets = JSON.parse(xdet[xx])

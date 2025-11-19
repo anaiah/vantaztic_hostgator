@@ -4,7 +4,8 @@ author : Carlo O. Dominguez
 let dash = {
 	socket:null,
    // myIp: "http://192.168.214.221:10000", //https://vantaztic-api-onrender.onrender.com}
-    myIp: `https://vantaztic-api-onrender.onrender.com`,
+    //myIp: `https://vantaztic-api-onrender.onrender.com`,
+    myIp: myIp,
     
     approver_type:null,
     resolver:async (xmsg,xtype) => {
@@ -163,7 +164,8 @@ let dash = {
                     obj.description = xdetails.description
                     obj.remarks = data.result[key].client_remarks
 
-                    obj.avatarurl = `https://app.vantaztic.com/assets/resized/${data.result[key].po_number.replace("TEST_","")}.jpg`
+                    ///take out nov. 19, 2025 obj.avatarurl = `https://app.vantaztic.com/assets/resized/${data.result[key].po_number.replace("TEST_","")}.jpg`
+                    obj.avatarurl = `https://coral-oyster-704291.hostingersite.com/dr/${data.result[key].po_number.replace("TEST_","")}.jpg`
                     
                     // Parse into a Date object
                     obj.po_date = dash.formatdate(data.result[key].po_date)

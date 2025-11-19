@@ -10,7 +10,6 @@ const scanner = {
             document.getElementById('my-qr-reader').classList.remove('disableMe')
         }
 
-       
 
     },
      
