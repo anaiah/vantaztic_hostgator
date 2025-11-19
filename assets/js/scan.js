@@ -13,7 +13,7 @@ const scanner = {
        
 
     },
-    
+     
     qrsave:(txt,guard) =>{
 
         document.getElementById('xmsg').innerHTML = "Scanning..."
