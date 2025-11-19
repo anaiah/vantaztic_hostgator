@@ -1,0 +1,322 @@
+@import url(//fonts.googleapis.com/css?family=Nunito);
+
+@import url(//fonts.googleapis.com/css?family=Lato);
+
+html{
+	scroll-behavior:smooth;
+	scroll-padding-top:10rem;
+}
+body{
+  font-family:Lato;
+	min-height: 100vh;
+	background-color: #fff;
+}
+:target{
+	border:1px solid gray;
+}
+
+*, *::before, *::after{
+	box-sizing: border-box;
+}
+
+label {
+    margin-bottom:0px;
+    padding-left:10px;
+	  padding-top:5px;
+    width:200px;
+	  color:green;
+    text-transform: uppercase;
+    display:inline-block;
+}
+
+
+.wrong .bi-check-lg
+{
+    display: none;
+}
+
+.good .bi-x-lg
+{
+    display: none;
+}
+
+/*
+table {
+    margin:10px 0;
+    border-collapse: collapse;
+    width: 60%;
+    border: 1px solid #ddd;
+    }
+    th{
+        text-decoration: underline;
+    }
+    th, td {
+    text-align: left;
+    padding: 16px;
+    text-transform: uppercase;
+    }
+*/
+
+input[type="date"],
+input[type="password"],
+input[type="email"] {
+    padding:17px;
+    margin:5px 0;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    transition: .3s background-color;
+}
+
+input[type="date"]:hover,
+input[type="password"]:hover,
+input[type="email"]:hover{
+    border: 2px solid #aaa;
+}
+
+.lil-badge{
+  margin-left:3px;
+  font-size:10px;
+  color:#535252
+}
+
+.peso{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.count-notif{
+  vertical-align:middle;
+  margin-left:-15px;
+  margin-top: -20px;
+  font-size:14px;
+}
+
+#bell-badge{
+  padding-left:5px;
+  margin-left:5px;
+}
+
+#itembuy{
+  background-color:#fff;
+  color:#3a3737;
+  padding:10px;
+  display:block;
+  border-radius: 7px;
+}
+.badge-counter{
+  padding:3px;
+}
+
+.eqpt{
+    padding:17px;
+    margin:0px 0;
+    border: 2px solid #eee;
+    border-radius: 8px;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    transition: .3s background-color;
+
+}
+.attach{
+  font-size: 9px;
+  text-decoration:  underline;
+}
+.imgpreview{
+  margin-top: 10px;
+  margin-left: 10px;
+  cursor:pointer;
+}
+.eqptmain{
+  color:darkorange;
+}
+.eqptno{
+  color:rgb(73, 143, 4)
+  /*cursor:pointer;*/
+}
+
+.cartinput{
+  width:100px;
+}
+
+#search-po{
+  margin:auto;
+  width:100px;
+}
+
+.shopcart:hover{
+  background:#5a5c69;
+}
+
+#search-po{
+  padding:0px;
+  margin-left: 0px;  
+}
+
+#searchpo{
+}
+
+.shopcart{
+    width: 2.75rem;
+    height: 2.75rem;
+    text-align:center;
+    line-height:46px;
+  }
+
+.grandtotal{
+  color:#d11b06;
+  font-size: 16px;
+}
+
+table.clientelle tr td { 
+  font-size: 11px; 
+  color:rgb(95, 93, 93);
+
+}
+
+#nav-po, #nav-client{
+  padding: 1.5rem;
+}
+
+#tabinfo {
+  padding-left:0px;
+  padding-right: 0px;
+}
+
+table.clientelle2 tr td { 
+  font-size: 11px; 
+  color:rgb(95, 93, 93);
+}
+
+table #gtotal{
+  color:#7e1106;
+  font-weight: bold;
+  font-size: 15px;
+  padding-right:45px;
+  padding-top: 15px;
+}
+.addpo{
+color:#d11b06
+  
+}
+
+.addpo:hover{
+  cursor:pointer;
+  color:#7e1106;
+}
+
+.eqptno:hover{
+  /*color:crimson;*/
+}
+.bigicon {
+  color:green;
+}
+
+.eprice{
+  font-size:12px;
+}
+.client{
+  font-size:13px;
+}
+
+.estat{
+  font-size:9px;
+}
+.icon-trans{
+  color:blue;  
+}
+.icon-trans:hover{
+  color:rgb(244, 82, 7);
+  cursor:pointer;
+  
+}
+.lets-hide{
+  visibility:hidden;
+  display:none;
+}
+.lets-show{
+  visibility:visible;
+}
+
+select{
+  color:#aaa;
+  font: 15px Arial;
+	
+}
+
+#filter_type,#filter_status{
+  width: 9em;
+}
+
+
+option:not(first-child) {
+	font: 15px Arial;
+}
+.bg-gradient-primary{
+  background: rgb(2,0,36);
+  background: linear-gradient(166deg, rgba(2,0,36,1) 0%, rgba(0,4,9,1) 0%, rgba(9,16,125,0.9892156691778273) 93%);
+}
+
+.modalcolor{
+    background: rgb(2,0,36);
+    background: linear-gradient(166deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 0%, rgba(9,16,125,1) 29%, rgba(0,212,255,1) 100%); /*background-color:#d21d0a;*/
+}
+
+.modal-title{
+	color:#fff;
+	text-shadow: 2px 2px 3px #7e1106;
+}
+/* The snackbar - position it at the bottom and in the middle of the screen */
+#snackbar {
+    visibility: hidden; /* Hidden by default. Visible on click */
+    min-width: 250px; /* Set a default minimum width */
+    margin-left: -125px; /* Divide value of min-width by 2 */
+    background-color: rgb(61, 58, 58); /* Black background color */
+    color: #fff; /* White text color */
+    text-align: center; /* Centered text */
+    border-radius: 10px; /* Rounded borders */
+    padding: 16px; /* Padding */
+    position: fixed; /* Sit on top of the screen */
+    z-index: -1; /* Add a z-index if needed */
+    left: 50%; /* Center the snackbar */
+    bottom: 30px; /* 30px from the bottom */
+  }
+  
+  /* Show the snackbar when clicking on a button (class added with JavaScript) */
+  #snackbar.show {
+    visibility: visible; /* Show the snackbar */
+    /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+    However, delay the fade out process for 2.5 seconds */
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  }
+  #snackbar.hid{
+    visibility:hidden;
+  }
+  /* Animations to fade the snackbar in and out */
+  @-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+  }
+  
+  @-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  }
+  
+  @keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+  } 
+    /* Animations to fade the snackbar in and out */
+@keyframes glow {
+      from {
+    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073;
+  }
+  to {
+    text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6;
+  }
+}

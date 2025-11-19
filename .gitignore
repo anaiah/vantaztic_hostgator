@@ -3,11 +3,9 @@
 node_modules/*
 *.config
 assets/boots*
-assets/css/*
 assets/upload/*
 assets/resized/*
 assets/obfucate/*
-assets/img/*
 assets/fonts/*
 .htaccess.txt
 assets/js/.htaccess

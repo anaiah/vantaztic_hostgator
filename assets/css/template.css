@@ -1,0 +1,34 @@
+@import url(//fonts.googleapis.com/css?family=Nunito);
+
+@import url(//fonts.googleapis.com/css?family=Lato);
+
+html{
+	scroll-behavior:smooth;
+	scroll-padding-top:10rem;
+}
+body{
+    font-family:Lato;
+	  min-height: 100vh;
+    background-color: #fff;
+    font-size:1.125rem;
+    line-height:1.6;
+}
+
+/*
+img,
+picture,
+svg {
+
+    optionL
+    max-width:100%;
+    display:block;
+}
+*/
+
+:target{
+	border:1px solid gray;
+}
+
+*, *::before, *::after{
+	box-sizing: border-box;
+}
