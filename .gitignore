@@ -2,7 +2,6 @@
 .vscode/settings.json
 node_modules/*
 *.config
-assets/boots*
 assets/upload/*
 assets/resized/*
 assets/obfucate/*
