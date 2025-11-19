@@ -5,7 +5,8 @@ this is for utilities
 modals,forms,utilities
 */
 
-const myIp = `https://vantaztic-api-onrender.onrender.com`
+//const myIp = `https://vantaztic-api-onrender.onrender.com`
+const myIp = `https://anaiah.github.io/vantaztic_hostgator`
 //const myIp = "http://192.168.62.221:10000"
 
 
