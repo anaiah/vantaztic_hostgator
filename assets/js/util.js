@@ -398,15 +398,16 @@ let util ={
 
                     if(data.grp_id=="2"){
                         console.log('new merrylle')
-                        window.location.replace(`/admin`)
+                        window.location.replace(`${myIp}/admin`)
+
                     }else if( data.grp_id=="1" || data.grp_id=="0"){
                         console.log('OTP PLS...')   
                         /*  take out otp
                         util.otpemail = data.email
                         util.sendotp(${admin.myIp}/sendotp/${data.email}/${data.fname}`)
                        */
-                        ////window.location.replace( `/dashboard` )
-                        window.location.replace( `/main` )
+                        window.location.replace( `${myIp}/dashboard` )
+                        ///window.location.replace( `/main` )
 
                         //location.href = 'https://vantaztic.com/app/dashboard.html'
                     }
