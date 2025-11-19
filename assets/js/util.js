@@ -5,8 +5,8 @@ this is for utilities
 modals,forms,utilities
 */
 
-//const myIp = `https://vantaztic-api-onrender.onrender.com`
-const myIp = `https://anaiah.github.io/vantaztic_hostgator`
+const myIp = `https://vantaztic-api-onrender.onrender.com`
+const xIp = `https://anaiah.github.io/vantaztic_hostgator`
 //const myIp = "http://192.168.62.221:10000"
 
 
@@ -398,7 +398,7 @@ let util ={
 
                     if(data.grp_id=="2"){
                         console.log('new merrylle')
-                        window.location.replace(`${myIp}/admin`)
+                        window.location.replace(`${xIp}/admin`)
 
                     }else if( data.grp_id=="1" || data.grp_id=="0"){
                         console.log('OTP PLS...')   
@@ -406,7 +406,7 @@ let util ={
                         util.otpemail = data.email
                         util.sendotp(${admin.myIp}/sendotp/${data.email}/${data.fname}`)
                        */
-                        window.location.replace( `${myIp}/dashboard` )
+                        window.location.replace( `${xIp}/dashboard` )
                         ///window.location.replace( `/main` )
 
                         //location.href = 'https://vantaztic.com/app/dashboard.html'
