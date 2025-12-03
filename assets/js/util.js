@@ -3,7 +3,7 @@ Author: Carlo Dominguez
 1/31/2023
 this is for utilities
 modals,forms,utilities
-*/
+*/ 
 
 const myIp = `https://vantaztic-api-onrender.onrender.com`
 const xIp = `https://anaiah.github.io/vantaztic_hostgator`

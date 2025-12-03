@@ -142,7 +142,7 @@ let admin = {
                                 max=${(data.result[key].qty == 1 ? '1' : data.result[key].qty )} 
                                 value=${data.result[key].qty}>
                             </td>
-                            </tr>
+                            </tr> 
                             <tr>
                             <td colspan=3><hr></td>
                             </tr>

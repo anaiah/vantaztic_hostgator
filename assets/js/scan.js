@@ -11,7 +11,7 @@ const scanner = {
         }
 
 
-    },
+    }, 
      
     qrsave:(txt,guard) =>{
 
