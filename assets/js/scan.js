@@ -15,7 +15,7 @@ const scanner = {
      
     qrsave:(txt,guard) =>{
 
-        document.getElementById('xmsg').innerHTML = "Scanning..."
+        document.getElementById('xmsg').innerHTML = "Scanning..." 
 
         //this is temporary ur.replace ... take out during production
         //const txt2 = txt.replace('https://vantaztic-api-onrender.onrender.com/','https://vantaztic-api-onrender.onrender.com/')
