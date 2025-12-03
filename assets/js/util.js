@@ -6,7 +6,9 @@ modals,forms,utilities
 */   
 
 const myIp = `https://vantaztic-api-onrender.onrender.com`
-const xIp = `https://anaiah.github.io/vantaztic_hostgator`
+//const xIp = `https://anaiah.github.io/vantaztic_hostgator`
+
+const xIp = window.location.origin;
 
 // const myIp = "http://192.168.1.7:10000"
 // const xIp = `http://localhost:4003`
