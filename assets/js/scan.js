@@ -10,8 +10,7 @@ const scanner = {
             document.getElementById('my-qr-reader').classList.remove('disableMe')
         }
 
-
-    },  
+     },  
      
     qrsave:(txt,guard) =>{
 
